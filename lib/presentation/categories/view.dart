@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:explorex/app/helpers.dart';
 import 'package:explorex/app/responsive.dart';
 import 'package:flutter/material.dart';
@@ -20,10 +22,10 @@ class CategoryPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.transparent,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           150.toAutoScaledHeight.toVerticalSpace,
-          _CloseButton(),
+          const _CloseButton(),
           8.toAutoScaledHeight.toVerticalSpace,
           Container(
             padding: EdgeInsets.only(
@@ -37,20 +39,14 @@ class CategoryPage extends StatelessWidget {
                 topRight: Radius.circular(16),
               ),
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                MenuType(),
-                Divider(
-                  height: 0.5,
-                  color: Color(0xFFA9AAAE),
-                ),
-                _CategoryHeader(),
-                _CategoryList(),
-              ],
-            ),
+            child: MenuType(),
           ),
+          Divider(
+            height: 0.5,
+            color: Color(0xFFA9AAAE),
+          ),
+          _CategoryHeader(),
+          _CategoryList(),
         ],
       ),
     );

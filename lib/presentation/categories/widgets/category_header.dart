@@ -5,20 +5,20 @@ class _CategoryHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.toAutoScaledWidth),
-      child: Container(
-        padding: EdgeInsets.only(
-          top: 24.toAutoScaledHeight,
-          bottom: 8.toAutoScaledHeight,
-        ),
-        child: Text(
-          "CATEGORIES (10)",
-          style: TextStyle(
-            fontSize: 12.toAutoScaledWidth,
-            fontWeight: FontWeight.w600,
-            color: Color(0xFFA9AAAE),
-          ),
+    return Container(
+      color: Colors.white,
+      padding: EdgeInsets.only(
+        top: 24.toAutoScaledHeight,
+        bottom: 8.toAutoScaledHeight,
+        left: 16.toAutoScaledWidth,
+        right: 16.toAutoScaledWidth,
+      ),
+      child: Text(
+        "CATEGORIES (10)",
+        style: TextStyle(
+          fontSize: 12.toAutoScaledWidth,
+          fontWeight: FontWeight.w600,
+          color: Color(0xFFA9AAAE),
         ),
       ),
     );

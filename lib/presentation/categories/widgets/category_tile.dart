@@ -29,8 +29,8 @@ class _CategoryTile extends StatelessWidget {
             scale: 1.1,
             child: Radio(
               fillColor: MaterialStatePropertyAll(Color(0xFF3D54FF)),
-              value: 'groupValue',
-              groupValue: 'groupValue',
+              value: isSelected ? -1 : Random(),
+              groupValue: isSelected ? -1 : Random(),
               onChanged: (_) {},
               visualDensity: VisualDensity.compact,
               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,

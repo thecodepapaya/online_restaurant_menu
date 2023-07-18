@@ -5,18 +5,25 @@ class _CategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          8.toAutoScaledHeight.toVerticalSpace,
-          _CategoryTile(isSelected: false),
-          _CategoryTile(isSelected: true),
-          _CategoryTile(isSelected: false),
-          _CategoryTile(isSelected: false),
-          _CategoryTile(isSelected: false),
-          _CategoryTile(isSelected: false),
-          _CategoryTile(isSelected: false),
-        ],
+    return Expanded(
+      child: Container(
+        color: Colors.white,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              8.toAutoScaledHeight.toVerticalSpace,
+              _CategoryTile(isSelected: false),
+              _CategoryTile(isSelected: true),
+              _CategoryTile(isSelected: false),
+              _CategoryTile(isSelected: false),
+              _CategoryTile(isSelected: false),
+              _CategoryTile(isSelected: false),
+              _CategoryTile(isSelected: false),
+              _CategoryTile(isSelected: false),
+              20.toAutoScaledHeight.toVerticalSpace,
+            ],
+          ),
+        ),
       ),
     );
   }
