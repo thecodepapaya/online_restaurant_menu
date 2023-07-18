@@ -5,26 +5,35 @@ class _CategoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: Colors.white,
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              8.toAutoScaledHeight.toVerticalSpace,
-              _CategoryTile(isSelected: false),
-              _CategoryTile(isSelected: true),
-              _CategoryTile(isSelected: false),
-              _CategoryTile(isSelected: false),
-              _CategoryTile(isSelected: false),
-              _CategoryTile(isSelected: false),
-              _CategoryTile(isSelected: false),
-              _CategoryTile(isSelected: false),
-              20.toAutoScaledHeight.toVerticalSpace,
-            ],
+    final controller = Get.find<_CategoryController>();
+
+    return Obx(() {
+      final selectedMenu = controller.selectedMenu.value;
+      final selectedCategory = controller.selectedCategory.value;
+      final categoriesMap = controller.generateCategoriesMap(selectedMenu);
+
+      return Expanded(
+        child: Container(
+          color: Colors.white,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                8.toAutoScaledHeight.toVerticalSpace,
+                ...categoriesMap.entries
+                    .map(
+                      (e) => _CategoryTile(
+                        value: e.key,
+                        selectedValue: selectedCategory,
+                        valueCount: e.value,
+                      ),
+                    )
+                    .toList(),
+                20.toAutoScaledHeight.toVerticalSpace,
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TransparentRoute extends PageRoute<void> {
+class TransparentRoute extends PageRoute<List> {
   TransparentRoute({
     required this.builder,
     RouteSettings? settings,

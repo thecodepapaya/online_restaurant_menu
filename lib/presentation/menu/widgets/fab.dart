@@ -5,6 +5,8 @@ class Fab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _MenuController controller = Get.find<_MenuController>();
+
     return ElevatedButton(
       style: ButtonStyle(
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -23,13 +25,7 @@ class Fab extends StatelessWidget {
         foregroundColor: const MaterialStatePropertyAll(Colors.white),
         elevation: const MaterialStatePropertyAll(6),
       ),
-      onPressed: () {
-        Navigator.of(context).push(
-          TransparentRoute(
-            builder: (BuildContext context) => const CategoryPage(),
-          ),
-        );
-      },
+      onPressed: controller._navigateToCategoryScreen,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

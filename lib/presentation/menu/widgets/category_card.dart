@@ -21,6 +21,8 @@ class _CategoryCardState extends State<CategoryCard> {
       child: Theme(
         data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
         child: ExpansionTile(
+          //TODO
+          initiallyExpanded: true,
           tilePadding: EdgeInsets.symmetric(
             vertical: 0.toAutoScaledHeight,
             horizontal: 16.toAutoScaledWidth,

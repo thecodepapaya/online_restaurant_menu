@@ -255,8 +255,8 @@ class Entry {
   final Dish dish;
   final String category;
   final EntryMenuEntryType menuEntryType;
-  final int sellingPrice;
-  final int displayPrice;
+  final double sellingPrice;
+  final double displayPrice;
   final bool isCustomizable;
   final bool hasAddons;
   final bool hasCombos;
@@ -269,7 +269,7 @@ class Entry {
   final int imageIndex;
   final bool hasSuggestedMenuEntry;
   final dynamic suggestedMenuEntry;
-  final int discountedPrice;
+  final double discountedPrice;
 
   Entry({
     required this.id,
@@ -298,8 +298,8 @@ class Entry {
     Dish? dish,
     String? category,
     EntryMenuEntryType? menuEntryType,
-    int? sellingPrice,
-    int? displayPrice,
+    double? sellingPrice,
+    double? displayPrice,
     bool? isCustomizable,
     bool? hasAddons,
     bool? hasCombos,
@@ -312,7 +312,7 @@ class Entry {
     int? imageIndex,
     bool? hasSuggestedMenuEntry,
     dynamic suggestedMenuEntry,
-    int? discountedPrice,
+    double? discountedPrice,
   }) =>
       Entry(
         id: id ?? this.id,
@@ -429,8 +429,8 @@ class MenuEntry {
   final Dish dish;
   final dynamic category;
   final PurpleMenuEntryType menuEntryType;
-  final int sellingPrice;
-  final int displayPrice;
+  final double sellingPrice;
+  final double displayPrice;
   final bool isCustomizable;
   final bool hasAddons;
   final bool hasCombos;
@@ -464,8 +464,8 @@ class MenuEntry {
     Dish? dish,
     dynamic category,
     PurpleMenuEntryType? menuEntryType,
-    int? sellingPrice,
-    int? displayPrice,
+    double? sellingPrice,
+    double? displayPrice,
     bool? isCustomizable,
     bool? hasAddons,
     bool? hasCombos,
@@ -536,15 +536,15 @@ class MenuEntry {
 }
 
 class Dish {
-  final String itemCode;
+  final String? itemCode;
   final String name;
-  final String description;
-  final MeatStatus meatStatus;
+  final String? description;
+  final MeatStatus? meatStatus;
   final bool containsAlcohol;
   final bool isSpicy;
   final bool isChefSpecial;
   final bool hasImage;
-  final String image;
+  final String? image;
 
   Dish({
     required this.itemCode,
@@ -589,7 +589,7 @@ class Dish {
         itemCode: json["itemCode"],
         name: json["name"],
         description: json["description"],
-        meatStatus: meatStatusValues.map[json["meatStatus"]]!,
+        meatStatus: meatStatusValues.map[json["meatStatus"]],
         containsAlcohol: json["containsAlcohol"],
         isSpicy: json["isSpicy"],
         isChefSpecial: json["isChefSpecial"],

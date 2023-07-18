@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:explorex/app/helpers.dart';
 import 'package:explorex/app/responsive.dart';
+import 'package:explorex/data/data_repository.dart';
+import 'package:explorex/domains/menu.dart';
 import 'package:explorex/presentation/categories/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../../app/common/transparent_route.dart';
 
@@ -19,6 +24,8 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _MenuController _ = Get.put(_MenuController());
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Color(0xFFE5E6EF),
