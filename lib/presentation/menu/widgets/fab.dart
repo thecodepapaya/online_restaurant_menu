@@ -23,7 +23,13 @@ class Fab extends StatelessWidget {
         foregroundColor: const MaterialStatePropertyAll(Colors.white),
         elevation: const MaterialStatePropertyAll(6),
       ),
-      onPressed: () {},
+      onPressed: () {
+        Navigator.of(context).push(
+          TransparentRoute(
+            builder: (BuildContext context) => const CategoryPage(),
+          ),
+        );
+      },
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [

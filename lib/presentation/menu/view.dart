@@ -1,7 +1,10 @@
 import 'package:explorex/app/helpers.dart';
 import 'package:explorex/app/responsive.dart';
+import 'package:explorex/presentation/categories/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../app/common/transparent_route.dart';
 
 part 'controller.dart';
 part 'widgets/category_card.dart';
