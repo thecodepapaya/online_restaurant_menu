@@ -6,12 +6,33 @@ class RecommendedBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 30,
-      decoration: BoxDecoration(
-        color: Colors.grey,
+      padding: EdgeInsets.symmetric(
+        vertical: 8.toAutoScaledHeight,
+        horizontal: 16.toAutoScaledWidth,
       ),
-      child: Text('Recommended dish 3'),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Color(0xFF7f7f7f).withOpacity(0.05),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            'Recommended in Food Menu',
+            style: TextStyle(
+              fontSize: 10.toAutoScaledWidth,
+              color: Color(0xFF121212),
+            ),
+          ),
+          Text(
+            '(3 items)',
+            style: TextStyle(
+              fontSize: 10.toAutoScaledWidth,
+              color: Color(0xFF5a5a5a),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
