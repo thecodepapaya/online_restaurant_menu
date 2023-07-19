@@ -10,6 +10,7 @@ class PreferenceBar extends StatelessWidget {
       child: Row(
         children: [
           16.toAutoScaledWidth.toHorizontalSpace,
+          const PreferenceButton.vegan(),
           const PreferenceButton.veg(),
           const PreferenceButton.nonveg(),
           const PreferenceButton.egg(),
@@ -40,6 +41,11 @@ class PreferenceButton extends StatelessWidget {
       : text = 'Egg',
         assetPath = "assets/icons/egg_icon.svg",
         status = MeatStatus.VEG_CONTAINS_EGG;
+
+  const PreferenceButton.vegan()
+      : text = 'Vegan',
+        assetPath = "assets/icons/vegan_icon.svg",
+        status = MeatStatus.VEGAN;
 
   @override
   Widget build(BuildContext context) {

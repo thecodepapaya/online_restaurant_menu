@@ -133,7 +133,7 @@ class _TextData extends StatelessWidget {
         return "egg_icon.svg";
 
       case MeatStatus.VEGAN:
-        return "veg_icon.svg";
+        return "vegan_icon.svg";
 
       case MeatStatus.NA:
       case null:
@@ -171,7 +171,7 @@ class _ImageData extends StatelessWidget {
                   entry.dish.hasImage ? entry.dish.image! : '',
                   errorBuilder: (context, error, stackTrace) {
                     return Image.asset(
-                      "assets/images/burger.jpg",
+                      "assets/images/no_image.jpeg",
                       height: 100.toAutoScaledHeight,
                       width: 100.toAutoScaledWidth,
                       fit: BoxFit.cover,

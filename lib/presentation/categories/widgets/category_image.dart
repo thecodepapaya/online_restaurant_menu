@@ -49,7 +49,7 @@ class _CategoryImage extends StatelessWidget {
                       "https://loremflickr.com/164/36",
                       errorBuilder: (context, error, stackTrace) {
                         return Image.asset(
-                          "assets/images/drinks_food.jpg",
+                          "assets/images/no_image.jpeg",
                           height: 36.toAutoScaledHeight,
                           width: 164.toAutoScaledWidth,
                           fit: BoxFit.cover,

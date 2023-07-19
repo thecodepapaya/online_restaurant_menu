@@ -17,7 +17,7 @@ class _ImageHeader extends StatelessWidget {
         imageUrl,
         errorBuilder: (context, error, stackTrace) {
           return Image.asset(
-            "assets/images/drinks_food.jpg",
+            "assets/images/no_image.jpeg",
             height: 180.toAutoScaledHeight,
             width: 343.toAutoScaledWidth,
             fit: BoxFit.cover,

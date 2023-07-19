@@ -66,7 +66,7 @@ class _DishHeader extends StatelessWidget {
         return "egg_icon.svg";
 
       case MeatStatus.VEGAN:
-        return "veg_icon.svg";
+        return "vegan_icon.svg";
 
       case MeatStatus.NA:
       case null:
