@@ -121,7 +121,7 @@ class _CategoryCardState extends State<CategoryCard> {
       child: Center(
         child: Icon(
           isExpanded ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded,
-          size: 20,
+          size: 20.toAutoScaledWidth,
         ),
       ),
     );
