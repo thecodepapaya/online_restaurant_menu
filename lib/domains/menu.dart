@@ -18,9 +18,6 @@ class Menu {
   final int orderIndex;
   final List<Entry> entries;
 
-  // Custom
-  Map<String, List<Entry>> categorySortedData = {};
-
   Menu({
     required this.id,
     required this.name,
@@ -118,22 +115,4 @@ class Menu {
         "orderIndex": orderIndex,
         "entries": List<dynamic>.from(entries.map((x) => x.toJson())),
       };
-
-  void populateCategoryWiseMenuEntries() {
-    final data = <String, List<Entry>>{};
-
-    for (final entry in entries) {
-      final hasKey = data.containsKey(entry.category);
-
-      if (hasKey) {
-        final categoryEntries = data[entry.category];
-        categoryEntries!.add(entry);
-        data[entry.category] = categoryEntries;
-      } else {
-        data[entry.category] = [entry];
-      }
-    }
-
-    categorySortedData = data;
-  }
 }

@@ -35,7 +35,7 @@ class MenuPage extends StatelessWidget {
         return const _NoData();
       }
 
-      final categorySortedData = controller.selectedMenu.value?.categorySortedData;
+      final categorySortedData = controller.categorySortedData.value;
 
       return SafeArea(
         child: Scaffold(
@@ -59,7 +59,7 @@ class MenuPage extends StatelessWidget {
                         categoryName: "Recommended",
                         entries: controller.recommendedDishes.value,
                       ),
-                      ...categorySortedData!.entries
+                      ...categorySortedData.entries
                           .map(
                             (e) => CategoryCard(
                               key: GlobalObjectKey(e.key),

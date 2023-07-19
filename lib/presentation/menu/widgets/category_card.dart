@@ -78,17 +78,31 @@ class _CategoryCardState extends State<CategoryCard> {
               ],
             ),
             children: <Widget>[
-              Divider(
+              const Divider(
                 height: 2,
                 color: Color(0xFFE5E6EF),
               ),
-              ...widget.entries
-                  .asMap()
-                  .entries
-                  .map(
-                    (e) => DishCard(isFirst: e.key == 0, entry: e.value),
-                  )
-                  .toList(),
+              ...widget.entries.asMap().entries.map((e) {
+                final selectedMeatPref = controller.selectedMeatStatus.value;
+                final isMeatPrefEmpty = selectedMeatPref == null;
+
+                if (isMeatPrefEmpty) {
+                  return DishCard(
+                    isFirst: e.key == 0,
+                    entry: e.value,
+                  );
+                } else {
+                  final isMeatPrefMatch = e.value.dish.meatStatus == selectedMeatPref;
+                  if (isMeatPrefMatch) {
+                    return DishCard(
+                      isFirst: e.key == 0,
+                      entry: e.value,
+                    );
+                  } else {
+                    return SizedBox.shrink();
+                  }
+                }
+              }).toList(),
             ],
           ),
         ),

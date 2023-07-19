@@ -8,7 +8,9 @@ class _MenuController extends GetxController {
   Rx<ExplorexData?> data = Rx<ExplorexData?>(null);
   Rx<Menu?> selectedMenu = Rx<Menu?>(null);
   Rx<String?> selectedCategory = Rx<String?>(null);
+  Rx<MeatStatus?> selectedMeatStatus = Rx<MeatStatus?>(null);
   Rx<List<Entry>> recommendedDishes = Rx<List<Entry>>([]);
+  Rx<Map<String, List<Entry>>> categorySortedData = Rx<Map<String, List<Entry>>>({});
 
   // State variables END
 
@@ -37,7 +39,6 @@ class _MenuController extends GetxController {
       final initialCategory = initialMenu.entries.first.category;
 
       _updateSelectedMenu(newMenu: initialMenu, newCategory: initialCategory);
-      _populateRecommended();
     }
   }
 
@@ -67,11 +68,7 @@ class _MenuController extends GetxController {
       if (updatedSelection != null) {
         _updateSelectedMenu(newMenu: updatedSelection.first, newCategory: updatedSelection.last);
 
-        Scrollable.ensureVisible(
-          GlobalObjectKey(updatedSelection.last).currentContext!,
-          // alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart,
-          // alignment: 200,
-        );
+        Scrollable.ensureVisible(GlobalObjectKey(updatedSelection.last).currentContext!);
       }
     }
   }
@@ -84,18 +81,62 @@ class _MenuController extends GetxController {
     selectedMenu.value = newMenu;
     selectedCategory.value = newCategory;
 
-    selectedMenu.value?.populateCategoryWiseMenuEntries();
+    _populateCategoryWiseMenuEntries();
+
+    _populateRecommended();
   }
 
   void _populateRecommended() {
     final data = <Entry>[];
 
     selectedMenu.value?.entries.forEach((entry) {
-      if (entry.isRecommended) {
+      final isMeatPrefMatch = entry.dish.meatStatus == selectedMeatStatus.value || selectedMeatStatus.value == null;
+
+      if (entry.isRecommended && isMeatPrefMatch) {
         data.add(entry);
       }
     });
 
     recommendedDishes.value = data;
+  }
+
+  void _onSelectMeatStatus(MeatStatus meatStatus) {
+    if (selectedMeatStatus.value == meatStatus) {
+      // Unselect
+      selectedMeatStatus.value = null;
+    } else {
+      selectedMeatStatus.value = meatStatus;
+    }
+
+    _updateSelectedMenu(newMenu: selectedMenu.value!, newCategory: selectedCategory.value!);
+  }
+
+  void _filterMeatPreference(MeatStatus meatStatus) {
+    final allDishes = List.from(selectedMenu.value?.entries ?? []);
+
+    allDishes.removeWhere((entry) => entry.dish.meatStatus != meatStatus);
+  }
+
+  void _populateCategoryWiseMenuEntries() {
+    final data = <String, List<Entry>>{};
+
+    final entries = selectedMenu.value?.entries ?? [];
+
+    for (final entry in entries) {
+      final hasKey = data.containsKey(entry.category);
+      final isMeatPrefMatch = entry.dish.meatStatus == selectedMeatStatus.value || selectedMeatStatus.value == null;
+
+      if (!isMeatPrefMatch) continue;
+
+      if (hasKey) {
+        final categoryEntries = data[entry.category];
+        categoryEntries!.add(entry);
+        data[entry.category] = categoryEntries;
+      } else {
+        data[entry.category] = [entry];
+      }
+    }
+
+    categorySortedData.value = data;
   }
 }
