@@ -10,10 +10,11 @@ class _ScrollDownButton extends StatefulWidget {
 class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation animation;
+  late Timer timer;
 
   double padding = 0;
 
-  final animationDuration = const Duration(milliseconds: 500);
+  final animationDuration = const Duration(milliseconds: 400);
 
   @override
   void initState() {
@@ -35,7 +36,7 @@ class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerP
 
     animation.addListener(() {
       if (controller.isCompleted) {
-        Future.delayed(const Duration(milliseconds: 800), () {
+        timer = Timer(const Duration(milliseconds: 800), () {
           controller.reverse();
         });
       } else if (animation.isDismissed) {
@@ -52,6 +53,7 @@ class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerP
 
   @override
   void dispose() {
+    timer.cancel();
     controller.dispose();
 
     super.dispose();

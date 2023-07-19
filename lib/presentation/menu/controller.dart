@@ -32,8 +32,10 @@ class _MenuController extends GetxController {
     await _getData();
 
     if (hasData) {
-      selectedMenu.value = data.value?.description.menus.first;
-      selectedCategory.value = selectedMenu.value?.entries.first.category;
+      final initialMenu = data.value!.description.menus.first;
+      final initialCategory = initialMenu.entries.first.category;
+
+      _updateSelectedMenu(newMenu: initialMenu, newCategory: initialCategory);
     }
   }
 
@@ -61,9 +63,19 @@ class _MenuController extends GetxController {
       );
 
       if (updatedSelection != null) {
-        selectedMenu.value = updatedSelection.first;
-        selectedCategory.value = updatedSelection.last;
+        _updateSelectedMenu(newMenu: updatedSelection.first, newCategory: updatedSelection.last);
       }
     }
+  }
+
+  void _updateSelectedMenu({
+    required Menu newMenu,
+    required String newCategory,
+  }) {
+    log('CHANGED selectedMenu: ${newMenu.name} selectedCategory: $newCategory', name: '_updateSelectedMenu');
+    selectedMenu.value = newMenu;
+    selectedCategory.value = newCategory;
+
+    selectedMenu.value?.populateCategoryWiseMenuEntries();
   }
 }

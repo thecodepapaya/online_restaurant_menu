@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:explorex/domains/menu.dart';
+import 'package:explorex/domains/explorex_data.dart';
 import 'package:flutter/services.dart';
 
 class DataRepository {

@@ -53,25 +53,30 @@ class _CategoryController extends GetxController {
     selectedCategory.value = menu.entries.first.category;
   }
 
+  // TODO
   Map<String, int> generateCategoriesMap(Menu menu) {
     final data = <String, int>{};
 
-    menu.entries.forEach((entry) {
-      final categoryExists = data.containsKey(entry.category);
+    menu.entries.forEach(
+      (entry) {
+        final categoryExists = data.containsKey(entry.category);
 
-      if (categoryExists) {
-        final count = data[entry.category]!;
-        data[entry.category] = count + 1;
-      } else {
-        data[entry.category] = 1;
-      }
-    });
+        if (categoryExists) {
+          final count = data[entry.category]!;
+          data[entry.category] = count + 1;
+        } else {
+          data[entry.category] = 1;
+        }
+      },
+    );
 
     return data;
   }
 
   void onCategoryTilePressed(String category) {
     selectedCategory.value = category;
+
+    _returnToMenuScreen();
   }
 
   // List<String> getCategoriesList(Menu menu) {
