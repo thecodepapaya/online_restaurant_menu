@@ -18,23 +18,23 @@ class _ButtonRow extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.only(
-        right: 16.toAutoScaledWidth,
-        left: 32.toAutoScaledWidth,
-        bottom: 16.toAutoScaledHeight,
-        top: 16.toAutoScaledHeight,
+        right: 16.toAutoScaledWidthWithContext(context),
+        left: 32.toAutoScaledWidthWithContext(context),
+        bottom: 16.toAutoScaledHeightWithContext(context),
+        top: 16.toAutoScaledHeightWithContext(context),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const DishCounter(initialCount: 1),
-          16.toAutoScaledWidth.toHorizontalSpace,
+          16.toAutoScaledWidthWithContext(context).toHorizontalSpace,
           InkWell(
             onTap: Get.back,
             child: Container(
-              width: 176.toAutoScaledWidth,
-              height: 42.toAutoScaledHeight,
+              width: 176.toAutoScaledWidthWithContext(context),
+              height: 42.toAutoScaledHeightWithContext(context),
               padding: EdgeInsets.symmetric(
-                horizontal: 16.toAutoScaledWidth,
+                horizontal: 16.toAutoScaledWidthWithContext(context),
               ),
               decoration: BoxDecoration(
                 color: Color(0xFF3D54FF),
@@ -48,7 +48,7 @@ class _ButtonRow extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
-                      fontSize: 12.toAutoScaledWidth,
+                      fontSize: 12.toAutoScaledWidthWithContext(context),
                     ),
                   ),
                   Text(
@@ -56,7 +56,7 @@ class _ButtonRow extends StatelessWidget {
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w600,
-                      fontSize: 12.toAutoScaledWidth,
+                      fontSize: 12.toAutoScaledWidthWithContext(context),
                     ),
                   ),
                 ],

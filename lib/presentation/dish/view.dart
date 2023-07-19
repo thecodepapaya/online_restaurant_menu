@@ -46,7 +46,7 @@ class _DishPageState extends State<DishPage> {
         children: [
           const Expanded(child: SizedBox()),
           const _CloseButton(),
-          8.toAutoScaledHeight.toVerticalSpace,
+          8.toAutoScaledHeightWithContext(context).toVerticalSpace,
           const _ImageHeader(),
           const _DishHeader(),
           const _ButtonRow(),

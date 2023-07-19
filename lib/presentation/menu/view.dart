@@ -55,7 +55,7 @@ class MenuPage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      16.toAutoScaledHeight.toVerticalSpace,
+                      16.toAutoScaledHeightWithContext(context).toVerticalSpace,
                       CategoryCard(
                         categoryName: "Recommended",
                         entries: controller.recommendedDishes.value,
@@ -69,7 +69,7 @@ class MenuPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      16.toAutoScaledHeight.toVerticalSpace,
+                      16.toAutoScaledHeightWithContext(context).toVerticalSpace,
                     ],
                   ),
                 ),

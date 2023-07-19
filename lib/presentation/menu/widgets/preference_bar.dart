@@ -9,7 +9,7 @@ class PreferenceBar extends StatelessWidget {
       color: Colors.white,
       child: Row(
         children: [
-          16.toAutoScaledWidth.toHorizontalSpace,
+          16.toAutoScaledWidthWithContext(context).toHorizontalSpace,
           const PreferenceButton.vegan(),
           const PreferenceButton.veg(),
           const PreferenceButton.nonveg(),
@@ -58,9 +58,9 @@ class PreferenceButton extends StatelessWidget {
 
       return Padding(
         padding: EdgeInsets.only(
-          top: 12.toAutoScaledHeight,
-          bottom: 12.toAutoScaledHeight,
-          right: 8.toAutoScaledWidth,
+          top: 12.toAutoScaledHeightWithContext(context),
+          bottom: 12.toAutoScaledHeightWithContext(context),
+          right: 8.toAutoScaledWidthWithContext(context),
         ),
         child: InkWell(
           onTap: () {
@@ -68,28 +68,28 @@ class PreferenceButton extends StatelessWidget {
           },
           child: Container(
             padding: EdgeInsets.symmetric(
-              vertical: 8.toAutoScaledHeight,
-              horizontal: 8.toAutoScaledWidth,
+              vertical: 8.toAutoScaledHeightWithContext(context),
+              horizontal: 8.toAutoScaledWidthWithContext(context),
             ),
             decoration: BoxDecoration(
               color: isSelected ? Colors.blue.withOpacity(0.2) : null,
               border: Border.all(
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(4.toAutoScaledWidth),
+              borderRadius: BorderRadius.circular(4.toAutoScaledWidthWithContext(context)),
             ),
             child: Row(
               children: [
                 SvgPicture.asset(
                   assetPath,
-                  height: 12.toAutoScaledHeight,
-                  width: 12.toAutoScaledWidth,
+                  height: 12.toAutoScaledHeightWithContext(context),
+                  width: 12.toAutoScaledWidthWithContext(context),
                 ),
                 4.toHorizontalSpace,
                 Text(
                   text,
                   style: TextStyle(
-                    fontSize: 10.toAutoScaledHeight,
+                    fontSize: 10.toAutoScaledHeightWithContext(context),
                   ),
                 ),
               ],

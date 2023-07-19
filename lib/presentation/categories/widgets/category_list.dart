@@ -18,7 +18,7 @@ class _CategoryList extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                8.toAutoScaledHeight.toVerticalSpace,
+                8.toAutoScaledHeightWithContext(context).toVerticalSpace,
                 ...categoriesMap.entries
                     .map(
                       (e) => _CategoryTile(
@@ -28,7 +28,7 @@ class _CategoryList extends StatelessWidget {
                       ),
                     )
                     .toList(),
-                20.toAutoScaledHeight.toVerticalSpace,
+                20.toAutoScaledHeightWithContext(context).toVerticalSpace,
               ],
             ),
           ),

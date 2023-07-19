@@ -11,8 +11,8 @@ class _CloseButton extends StatelessWidget {
       onPressed: Get.back,
       icon: SvgPicture.asset(
         "assets/icons/close_icon.svg",
-        height: 24.toAutoScaledHeight,
-        width: 24.toAutoScaledWidth,
+        height: 24.toAutoScaledHeightWithContext(context),
+        width: 24.toAutoScaledWidthWithContext(context),
       ),
     );
   }

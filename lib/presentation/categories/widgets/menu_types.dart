@@ -11,7 +11,7 @@ class MenuType extends StatelessWidget {
     final menuTypeLength = menus.length;
 
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.toAutoScaledWidth),
+      padding: EdgeInsets.symmetric(horizontal: 16.toAutoScaledWidthWithContext(context)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -19,14 +19,14 @@ class MenuType extends StatelessWidget {
             "MENU TYPE ($menuTypeLength)",
             style: TextStyle(
               color: const Color(0xFFA9AAAE),
-              fontSize: 12.toAutoScaledWidth,
+              fontSize: 12.toAutoScaledWidthWithContext(context),
               fontWeight: FontWeight.w600,
             ),
           ),
           ...menus
               .map(
                 (m) => Padding(
-                  padding: EdgeInsets.only(top: 16.toAutoScaledHeight),
+                  padding: EdgeInsets.only(top: 16.toAutoScaledHeightWithContext(context)),
                   child: _CategoryImage(menu: m),
                 ),
               )

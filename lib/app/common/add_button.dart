@@ -14,8 +14,8 @@ class AddButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 42.toAutoScaledHeight,
-        width: 119.toAutoScaledWidth,
+        height: 42.toAutoScaledHeightWithContext(context),
+        width: 119.toAutoScaledWidthWithContext(context),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
@@ -27,7 +27,7 @@ class AddButton extends StatelessWidget {
           child: Text(
             'Add',
             style: TextStyle(
-              fontSize: 12.toAutoScaledWidth,
+              fontSize: 12.toAutoScaledWidthWithContext(context),
               color: const Color(0xFF3D54FF),
             ),
           ),
@@ -39,7 +39,7 @@ class AddButton extends StatelessWidget {
     //   onPressed: onPressed,
     //   style: OutlinedButton.styleFrom(
     //     elevation: 0,
-    //     fixedSize: Size(119.toAutoScaledWidth, 42.toAutoScaledHeight),
+    //     fixedSize: Size(119.toAutoScaledWidthWithContext(context), 42.toAutoScaledHeightWithContext(context)),
     //     padding: EdgeInsets.zero,
     //     side: const BorderSide(
     //       color: Color(0xFF3D54FF),
@@ -51,7 +51,7 @@ class AddButton extends StatelessWidget {
     //   child: Text(
     //     'Add',
     //     style: TextStyle(
-    //       fontSize: 12.toAutoScaledWidth,
+    //       fontSize: 12.toAutoScaledWidthWithContext(context),
     //       color: const Color(0xFF3D54FF),
     //     ),
     //   ),

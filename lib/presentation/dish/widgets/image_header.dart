@@ -13,8 +13,8 @@ class _ImageHeader extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: 16.toAutoScaledHeight,
-        horizontal: 16.toAutoScaledWidth,
+        vertical: 16.toAutoScaledHeightWithContext(context),
+        horizontal: 16.toAutoScaledWidthWithContext(context),
       ),
       decoration: BoxDecoration(
         color: Colors.white,
@@ -34,13 +34,13 @@ class _ImageHeader extends StatelessWidget {
           errorBuilder: (context, error, stackTrace) {
             return Image.asset(
               "assets/images/no_image.jpeg",
-              height: 180.toAutoScaledHeight,
-              width: 343.toAutoScaledWidth,
+              height: 180.toAutoScaledHeightWithContext(context),
+              width: 343.toAutoScaledWidthWithContext(context),
               fit: BoxFit.cover,
             );
           },
-          height: 180.toAutoScaledHeight,
-          width: 343.toAutoScaledWidth,
+          height: 180.toAutoScaledHeightWithContext(context),
+          width: 343.toAutoScaledWidthWithContext(context),
           fit: BoxFit.cover,
         ),
       ),

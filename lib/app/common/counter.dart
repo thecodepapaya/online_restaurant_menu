@@ -48,8 +48,8 @@ class _DishCounterState extends State<DishCounter> {
             children: [
               _Button.dec(onPressed: _onDecrease),
               Container(
-                height: 42.toAutoScaledHeight,
-                width: 47.toAutoScaledWidth,
+                height: 42.toAutoScaledHeightWithContext(context),
+                width: 47.toAutoScaledWidthWithContext(context),
                 decoration: BoxDecoration(
                   color: const Color(0xFFE0E4FF),
                   border: Border.all(
@@ -61,7 +61,7 @@ class _DishCounterState extends State<DishCounter> {
                     '$count',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 12.toAutoScaledWidth,
+                      fontSize: 12.toAutoScaledWidthWithContext(context),
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF3D54FF),
                     ),
@@ -89,8 +89,8 @@ class _Button extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 42.toAutoScaledHeight,
-        width: 36.toAutoScaledWidth,
+        height: 42.toAutoScaledHeightWithContext(context),
+        width: 36.toAutoScaledWidthWithContext(context),
         decoration: BoxDecoration(
           color: const Color(0xFF3D54FF),
           borderRadius: BorderRadius.only(
@@ -102,7 +102,7 @@ class _Button extends StatelessWidget {
         ),
         child: Icon(
           symbol,
-          size: 16.toAutoScaledWidth,
+          size: 16.toAutoScaledWidthWithContext(context),
           color: Colors.white,
         ),
       ),

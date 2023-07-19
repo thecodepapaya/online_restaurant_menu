@@ -8,11 +8,11 @@ class EAppBar extends StatelessWidget {
     return Container(
       color: Colors.white,
       width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 12.toAutoScaledHeight),
+      padding: EdgeInsets.symmetric(vertical: 12.toAutoScaledHeightWithContext(context)),
       child: Image.asset(
         "assets/icons/logo.png",
-        width: 86.toAutoScaledWidth,
-        height: 24.toAutoScaledHeight,
+        width: 86.toAutoScaledWidthWithContext(context),
+        height: 24.toAutoScaledHeightWithContext(context),
       ),
     );
   }

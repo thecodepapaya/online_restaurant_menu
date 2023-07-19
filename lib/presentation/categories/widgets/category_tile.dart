@@ -24,12 +24,12 @@ class _CategoryTile extends StatelessWidget {
       },
       child: Container(
         margin: EdgeInsets.symmetric(
-          horizontal: 16.toAutoScaledWidth,
-          vertical: 4.toAutoScaledHeight,
+          horizontal: 16.toAutoScaledWidthWithContext(context),
+          vertical: 4.toAutoScaledHeightWithContext(context),
         ),
         padding: EdgeInsets.symmetric(
-          horizontal: 8.toAutoScaledWidth,
-          vertical: 12.toAutoScaledHeight,
+          horizontal: 8.toAutoScaledWidthWithContext(context),
+          vertical: 12.toAutoScaledHeightWithContext(context),
         ),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
@@ -48,16 +48,16 @@ class _CategoryTile extends StatelessWidget {
                 materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
               ),
             ),
-            12.toAutoScaledWidth.toHorizontalSpace,
+            12.toAutoScaledWidthWithContext(context).toHorizontalSpace,
             SizedBox(
-              width: 220.toAutoScaledWidth,
+              width: 220.toAutoScaledWidthWithContext(context),
               child: Text(
                 value,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: TextStyle(
                   color: isSelected ? const Color(0xFF3D54FF) : Colors.black,
-                  fontSize: 12.toAutoScaledWidth,
+                  fontSize: 12.toAutoScaledWidthWithContext(context),
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
                 ),
               ),
@@ -67,7 +67,7 @@ class _CategoryTile extends StatelessWidget {
               "($valueCount)",
               style: TextStyle(
                 color: isSelected ? const Color(0xFF3D54FF) : Colors.black,
-                fontSize: 12.toAutoScaledWidth,
+                fontSize: 12.toAutoScaledWidthWithContext(context),
                 fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
               ),
             ),

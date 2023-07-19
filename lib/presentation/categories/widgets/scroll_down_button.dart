@@ -63,7 +63,7 @@ class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerP
   Widget build(BuildContext context) {
     return InkWell(
       child: Padding(
-        padding: EdgeInsets.only(bottom: padding.toAutoScaledHeight),
+        padding: EdgeInsets.only(bottom: padding.toAutoScaledHeightWithContext(context)),
         child: Material(
           elevation: 26,
           borderRadius: BorderRadius.circular(40),
@@ -73,24 +73,24 @@ class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerP
               borderRadius: BorderRadius.circular(40),
             ),
             padding: EdgeInsets.only(
-              top: 24.toAutoScaledHeight - padding.toAutoScaledHeight,
-              left: 10.toAutoScaledWidth,
-              right: 10.toAutoScaledWidth,
-              bottom: 12.toAutoScaledHeight,
+              top: 24.toAutoScaledHeightWithContext(context) - padding.toAutoScaledHeightWithContext(context),
+              left: 10.toAutoScaledWidthWithContext(context),
+              right: 10.toAutoScaledWidthWithContext(context),
+              bottom: 12.toAutoScaledHeightWithContext(context),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
                 Icon(
                   Icons.keyboard_arrow_down_rounded,
-                  size: 24.toAutoScaledWidth,
+                  size: 24.toAutoScaledWidthWithContext(context),
                 ),
-                4.toAutoScaledHeight.toVerticalSpace,
+                4.toAutoScaledHeightWithContext(context).toVerticalSpace,
                 Text(
                   'Scroll\nDown',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 8.toAutoScaledWidth,
+                    fontSize: 8.toAutoScaledWidthWithContext(context),
                   ),
                 ),
               ],

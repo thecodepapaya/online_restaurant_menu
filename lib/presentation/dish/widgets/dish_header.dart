@@ -20,9 +20,9 @@ class _DishHeader extends StatelessWidget {
         ),
       ),
       padding: EdgeInsets.only(
-        bottom: 16.toAutoScaledHeight,
-        left: 16.toAutoScaledWidth,
-        right: 16.toAutoScaledWidth,
+        bottom: 16.toAutoScaledHeightWithContext(context),
+        left: 16.toAutoScaledWidthWithContext(context),
+        right: 16.toAutoScaledWidthWithContext(context),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -32,30 +32,30 @@ class _DishHeader extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 "assets/icons/${_meatStatusAsset(dish.meatStatus)}",
-                height: 16.toAutoScaledHeight,
-                width: 16.toAutoScaledWidth,
+                height: 16.toAutoScaledHeightWithContext(context),
+                width: 16.toAutoScaledWidthWithContext(context),
               ),
-              8.toAutoScaledWidth.toHorizontalSpace,
+              8.toAutoScaledWidthWithContext(context).toHorizontalSpace,
               Text(
                 dish.name,
                 style: TextStyle(
-                  fontSize: 16.toAutoScaledWidth,
+                  fontSize: 16.toAutoScaledWidthWithContext(context),
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ],
           ),
-          16.toAutoScaledHeight.toVerticalSpace,
+          16.toAutoScaledHeightWithContext(context).toVerticalSpace,
           ConstrainedBox(
             constraints: BoxConstraints(
-              maxHeight: 78.toAutoScaledHeight,
-              minHeight: 78.toAutoScaledHeight,
+              maxHeight: 78.toAutoScaledHeightWithContext(context),
+              minHeight: 78.toAutoScaledHeightWithContext(context),
             ),
             child: SingleChildScrollView(
               child: Text(
                 description,
                 style: TextStyle(
-                  fontSize: 12.toAutoScaledWidth,
+                  fontSize: 12.toAutoScaledWidthWithContext(context),
                   color: Color(0xFFA9AAAE),
                 ),
               ),

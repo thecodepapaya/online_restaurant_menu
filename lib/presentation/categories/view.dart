@@ -47,11 +47,11 @@ class CategoryPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const _CloseButton(),
-            8.toAutoScaledHeight.toVerticalSpace,
+            8.toAutoScaledHeightWithContext(context).toVerticalSpace,
             Container(
               padding: EdgeInsets.only(
-                top: 24.toAutoScaledHeight,
-                bottom: 16.toAutoScaledWidth,
+                top: 24.toAutoScaledHeightWithContext(context),
+                bottom: 16.toAutoScaledWidthWithContext(context),
               ),
               decoration: const BoxDecoration(
                 color: Colors.white,

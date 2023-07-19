@@ -26,9 +26,9 @@ class _CategoryCardState extends State<CategoryCard> {
 
       return Padding(
         padding: EdgeInsets.only(
-          left: 16.toAutoScaledWidth,
-          right: 16.toAutoScaledWidth,
-          bottom: 16.toAutoScaledWidth,
+          left: 16.toAutoScaledWidthWithContext(context),
+          right: 16.toAutoScaledWidthWithContext(context),
+          bottom: 16.toAutoScaledWidthWithContext(context),
         ),
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
@@ -36,8 +36,8 @@ class _CategoryCardState extends State<CategoryCard> {
             key: ValueKey(isInitiallyExpanded),
             initiallyExpanded: isInitiallyExpanded,
             tilePadding: EdgeInsets.symmetric(
-              vertical: 8.toAutoScaledWidth,
-              horizontal: 16.toAutoScaledWidth,
+              vertical: 8.toAutoScaledWidthWithContext(context),
+              horizontal: 16.toAutoScaledWidthWithContext(context),
             ),
             trailing: trailingWidget(isExpanded),
             onExpansionChanged: (bool expanded) {
@@ -48,10 +48,10 @@ class _CategoryCardState extends State<CategoryCard> {
             backgroundColor: Colors.white,
             collapsedBackgroundColor: Colors.white,
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.toAutoScaledWidth),
+              borderRadius: BorderRadius.circular(12.toAutoScaledWidthWithContext(context)),
             ),
             collapsedShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.toAutoScaledWidth),
+              borderRadius: BorderRadius.circular(12.toAutoScaledWidthWithContext(context)),
             ),
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +62,7 @@ class _CategoryCardState extends State<CategoryCard> {
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: TextStyle(
-                      fontSize: 12.toAutoScaledWidth,
+                      fontSize: 12.toAutoScaledWidthWithContext(context),
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -70,7 +70,7 @@ class _CategoryCardState extends State<CategoryCard> {
                 Text(
                   '${widget.entries.length} items',
                   style: TextStyle(
-                    fontSize: 12.toAutoScaledWidth,
+                    fontSize: 12.toAutoScaledWidthWithContext(context),
                     color: const Color(0xFFA9AAAE),
                   ),
                 ),
@@ -111,16 +111,16 @@ class _CategoryCardState extends State<CategoryCard> {
 
   Widget trailingWidget(bool isExpanded) {
     return Container(
-      height: 20.toAutoScaledHeight,
-      width: 20.toAutoScaledWidth,
+      height: 20.toAutoScaledHeightWithContext(context),
+      width: 20.toAutoScaledWidthWithContext(context),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4.toAutoScaledWidth),
+        borderRadius: BorderRadius.circular(4.toAutoScaledWidthWithContext(context)),
         color: const Color(0xFFE5E6EF),
       ),
       child: Center(
         child: Icon(
           isExpanded ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded,
-          size: 20.toAutoScaledWidth,
+          size: 20.toAutoScaledWidthWithContext(context),
         ),
       ),
     );

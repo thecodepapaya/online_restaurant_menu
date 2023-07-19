@@ -50,19 +50,19 @@ class _CategoryImage extends StatelessWidget {
                       errorBuilder: (context, error, stackTrace) {
                         return Image.asset(
                           "assets/images/no_image.jpeg",
-                          height: 36.toAutoScaledHeight,
-                          width: 164.toAutoScaledWidth,
+                          height: 36.toAutoScaledHeightWithContext(context),
+                          width: 164.toAutoScaledWidthWithContext(context),
                           fit: BoxFit.cover,
                         );
                       },
-                      height: 36.toAutoScaledHeight,
-                      width: 164.toAutoScaledWidth,
+                      height: 36.toAutoScaledHeightWithContext(context),
+                      width: 164.toAutoScaledWidthWithContext(context),
                       fit: BoxFit.cover,
                     ),
                   ),
                   Positioned(
-                    bottom: 9.toAutoScaledHeight,
-                    left: 16.toAutoScaledWidth,
+                    bottom: 9.toAutoScaledHeightWithContext(context),
+                    left: 16.toAutoScaledWidthWithContext(context),
                     child: SizedBox(
                       width: 100,
                       child: Text(
@@ -70,7 +70,7 @@ class _CategoryImage extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12.toAutoScaledWidth,
+                          fontSize: 12.toAutoScaledWidthWithContext(context),
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
                         ),
