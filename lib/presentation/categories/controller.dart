@@ -40,8 +40,8 @@ class _CategoryController extends GetxController {
   Future<bool> _returnToMenuScreen() async {
     final context = Get.context!;
 
-    Future.delayed(Duration(milliseconds: 100), () {
-      Navigator.of(context).pop([selectedMenu, selectedCategory]);
+    Future.delayed(Duration(milliseconds: 10), () {
+      Navigator.of(context).pop([selectedMenu.value, selectedCategory.value]);
     });
 
     return Future.value(false);

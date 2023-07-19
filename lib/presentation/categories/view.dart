@@ -70,6 +70,8 @@ class CategoryPage extends StatelessWidget {
             const _CategoryList(),
           ],
         ),
+        floatingActionButton: _ScrollDownButton(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       ),
     );
   }
