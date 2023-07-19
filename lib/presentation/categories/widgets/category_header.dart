@@ -12,7 +12,13 @@ class _CategoryHeader extends StatelessWidget {
       final categoriesCount = controller.generateCategoriesMap(selectedMenu).length;
 
       return Container(
-        color: Colors.white,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          border: Border.all(
+            width: 0,
+            color: Colors.white,
+          ),
+        ),
         padding: EdgeInsets.only(
           top: 24.toAutoScaledHeight,
           bottom: 8.toAutoScaledHeight,

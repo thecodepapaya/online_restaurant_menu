@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'dart:math' as MATH;
 
 import 'package:explorex/app/common/counter.dart';
-import 'package:explorex/app/common/transparent_route.dart';
 import 'package:explorex/app/helpers.dart';
 import 'package:explorex/app/responsive.dart';
 import 'package:explorex/data/data_repository.dart';

@@ -54,15 +54,21 @@ class _MenuController extends GetxController {
     final canProceed = context != null && hasData;
 
     if (canProceed) {
-      final updatedSelection = await Navigator.push<List>(
-        context,
-        TransparentRoute(
-          builder: (BuildContext context) => CategoryPage(
-            data: data.value!,
-            selectedCategory: selectedCategory.value!,
-            selectedMenu: selectedMenu.value!,
-          ),
-        ),
+      final updatedSelection = await showModalBottomSheet<List>(
+        context: context,
+        backgroundColor: Colors.transparent,
+        isScrollControlled: true,
+        barrierColor: Colors.black.withOpacity(0.8),
+        builder: (context) {
+          return FractionallySizedBox(
+            heightFactor: 0.8,
+            child: CategoryPage(
+              data: data.value!,
+              selectedCategory: selectedCategory.value!,
+              selectedMenu: selectedMenu.value!,
+            ),
+          );
+        },
       );
 
       if (updatedSelection != null) {
@@ -76,11 +82,13 @@ class _MenuController extends GetxController {
   void _navigateToDishScreen(Entry dishEntry) async {
     final context = Get.context!;
 
-    Navigator.push(
-      context,
-      TransparentRoute(
-        builder: (BuildContext context) => DishPage(dishEntry: dishEntry),
-      ),
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      barrierColor: Colors.black.withOpacity(0.8),
+      builder: (context) {
+        return DishPage(dishEntry: dishEntry);
+      },
     );
   }
 
@@ -120,12 +128,6 @@ class _MenuController extends GetxController {
     }
 
     _updateSelectedMenu(newMenu: selectedMenu.value!, newCategory: selectedCategory.value!);
-  }
-
-  void _filterMeatPreference(MeatStatus meatStatus) {
-    final allDishes = List.from(selectedMenu.value?.entries ?? []);
-
-    allDishes.removeWhere((entry) => entry.dish.meatStatus != meatStatus);
   }
 
   void _populateCategoryWiseMenuEntries() {

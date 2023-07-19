@@ -46,7 +46,6 @@ class CategoryPage extends StatelessWidget {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            150.toAutoScaledHeight.toVerticalSpace,
             const _CloseButton(),
             8.toAutoScaledHeight.toVerticalSpace,
             Container(

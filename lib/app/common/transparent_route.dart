@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+@Deprecated("Use showModalBottomSheet() instead.")
 class TransparentRoute extends PageRoute<List> {
   TransparentRoute({
     required this.builder,
