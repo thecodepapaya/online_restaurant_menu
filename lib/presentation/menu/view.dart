@@ -8,6 +8,7 @@ import 'package:explorex/app/responsive.dart';
 import 'package:explorex/data/data_repository.dart';
 import 'package:explorex/domains/explorex_data.dart';
 import 'package:explorex/presentation/categories/view.dart';
+import 'package:explorex/presentation/dish/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';

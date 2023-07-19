@@ -54,64 +54,70 @@ class _TextData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDiscounted = entry.displayPrice != entry.sellingPrice;
+    final controller = Get.find<_MenuController>();
 
-    return SizedBox(
-      width: 200.toAutoScaledWidth,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              SvgPicture.asset(
-                "assets/icons/$_meatStatusAsset",
-                height: 16.toAutoScaledHeight,
-                width: 16.toAutoScaledWidth,
-              ),
-              8.toAutoScaledWidth.toHorizontalSpace,
-              const Likes(),
-            ],
-          ),
-          12.toAutoScaledHeight.toVerticalSpace,
-          Text(
-            entry.dish.name,
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 14.toAutoScaledWidth,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          12.toAutoScaledHeight.toVerticalSpace,
-          Text(
-            entry.dish.description ?? '',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: TextStyle(
-              fontSize: 10.toAutoScaledWidth,
-              color: const Color(0xFFA9AAAE),
-            ),
-          ),
-          14.toAutoScaledHeight.toVerticalSpace,
-          Row(
-            children: [
-              Text(
-                "Rs ${entry.sellingPrice}",
-                style: TextStyle(
-                  fontSize: 10.toAutoScaledWidth,
-                  fontWeight: FontWeight.w600,
+    return InkWell(
+      onTap: () {
+        controller._navigateToDishScreen(entry);
+      },
+      child: SizedBox(
+        width: 200.toAutoScaledWidth,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/icons/$_meatStatusAsset",
+                  height: 16.toAutoScaledHeight,
+                  width: 16.toAutoScaledWidth,
                 ),
+                8.toAutoScaledWidth.toHorizontalSpace,
+                const Likes(),
+              ],
+            ),
+            12.toAutoScaledHeight.toVerticalSpace,
+            Text(
+              entry.dish.name,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 14.toAutoScaledWidth,
+                fontWeight: FontWeight.w600,
               ),
-              8.toAutoScaledWidth.toHorizontalSpace,
-              Text(
-                isDiscounted ? "Rs ${entry.displayPrice}" : "",
-                style: TextStyle(
-                  fontSize: 10.toAutoScaledWidth,
-                  decoration: TextDecoration.lineThrough,
+            ),
+            12.toAutoScaledHeight.toVerticalSpace,
+            Text(
+              entry.dish.description ?? '',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: TextStyle(
+                fontSize: 10.toAutoScaledWidth,
+                color: const Color(0xFFA9AAAE),
+              ),
+            ),
+            14.toAutoScaledHeight.toVerticalSpace,
+            Row(
+              children: [
+                Text(
+                  "Rs ${entry.sellingPrice}",
+                  style: TextStyle(
+                    fontSize: 10.toAutoScaledWidth,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                8.toAutoScaledWidth.toHorizontalSpace,
+                Text(
+                  isDiscounted ? "Rs ${entry.displayPrice}" : "",
+                  style: TextStyle(
+                    fontSize: 10.toAutoScaledWidth,
+                    decoration: TextDecoration.lineThrough,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -146,6 +152,8 @@ class _ImageData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<_MenuController>();
+
     return SizedBox(
       height: 135.toAutoScaledHeight,
       child: Stack(
@@ -153,21 +161,26 @@ class _ImageData extends StatelessWidget {
           Positioned(
             left: 10,
             top: 0,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(4),
-              child: Image.network(
-                entry.dish.hasImage ? entry.dish.image! : '',
-                errorBuilder: (context, error, stackTrace) {
-                  return Image.asset(
-                    "assets/images/burger.jpg",
-                    height: 100.toAutoScaledHeight,
-                    width: 100.toAutoScaledWidth,
-                    fit: BoxFit.cover,
-                  );
-                },
-                height: 100.toAutoScaledHeight,
-                width: 100.toAutoScaledWidth,
-                fit: BoxFit.cover,
+            child: InkWell(
+              onTap: () {
+                controller._navigateToDishScreen(entry);
+              },
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: Image.network(
+                  entry.dish.hasImage ? entry.dish.image! : '',
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.asset(
+                      "assets/images/burger.jpg",
+                      height: 100.toAutoScaledHeight,
+                      width: 100.toAutoScaledWidth,
+                      fit: BoxFit.cover,
+                    );
+                  },
+                  height: 100.toAutoScaledHeight,
+                  width: 100.toAutoScaledWidth,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

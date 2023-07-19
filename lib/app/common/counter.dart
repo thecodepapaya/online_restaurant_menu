@@ -3,7 +3,12 @@ import 'package:explorex/app/responsive.dart';
 import 'package:flutter/material.dart';
 
 class DishCounter extends StatefulWidget {
-  const DishCounter({super.key});
+  final int initialCount;
+
+  const DishCounter({
+    super.key,
+    this.initialCount = 0,
+  });
 
   @override
   State<DishCounter> createState() => _DishCounterState();
@@ -11,6 +16,12 @@ class DishCounter extends StatefulWidget {
 
 class _DishCounterState extends State<DishCounter> {
   int count = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    count = widget.initialCount;
+  }
 
   void _onDecrease() {
     setState(() {
@@ -95,23 +106,6 @@ class _Button extends StatelessWidget {
           color: Colors.white,
         ),
       ),
-
-      // style: ElevatedButton.styleFrom(
-      //   elevation: 0,
-      //   backgroundColor: Color(0xFF3D54FF),
-      //   foregroundColor: Colors.white,
-      //   padding: EdgeInsets.zero,
-      //   minimumSize: Size.zero,
-      //   shape: RoundedRectangleBorder(
-      //     borderRadius: BorderRadius.only(
-      //       topLeft: Radius.circular(isRightSide ? 0 : 4),
-      //       topRight: Radius.circular(isRightSide ? 4 : 0),
-      //       bottomLeft: Radius.circular(isRightSide ? 0 : 4),
-      //       bottomRight: Radius.circular(isRightSide ? 4 : 0),
-      //     ),
-      //   ),
-      //   fixedSize: Size(36.toAutoScaledWidth, 42.toAutoScaledHeight),
-      // ),
     );
   }
 }

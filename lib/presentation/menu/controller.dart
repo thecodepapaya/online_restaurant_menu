@@ -73,6 +73,17 @@ class _MenuController extends GetxController {
     }
   }
 
+  void _navigateToDishScreen(Entry dishEntry) async {
+    final context = Get.context!;
+
+    Navigator.push(
+      context,
+      TransparentRoute(
+        builder: (BuildContext context) => DishPage(dishEntry: dishEntry),
+      ),
+    );
+  }
+
   void _updateSelectedMenu({
     required Menu newMenu,
     required String newCategory,

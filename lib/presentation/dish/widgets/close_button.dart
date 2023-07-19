@@ -5,10 +5,10 @@ class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<_CategoryController>();
+    final _ = Get.find<_DishController>();
 
     return IconButton(
-      onPressed: controller._returnToMenuScreen,
+      onPressed: Get.back,
       icon: SvgPicture.asset(
         "assets/icons/close_icon.svg",
         height: 24.toAutoScaledHeight,
