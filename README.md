@@ -29,7 +29,7 @@ https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/07628b3c
 
 |Menu screen|Menu categories sheet|Dish info sheet|
 |---|---|---|
-|<img src="https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/31575529-ef78-4655-8a4a-885f9b9ed1a4" height=700>|<img src="https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/fa7bfad2-44d8-4c04-b1a9-aab0528a6594" height=700>|<img src="https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/8263a8c7-2710-47aa-8924-fc8d24baaae3" height=700>|
+|<img src="https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/31575529-ef78-4655-8a4a-885f9b9ed1a4" height=500>|<img src="https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/fa7bfad2-44d8-4c04-b1a9-aab0528a6594" height=500>|<img src="https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/8263a8c7-2710-47aa-8924-fc8d24baaae3" height=500>|
 
 
 
