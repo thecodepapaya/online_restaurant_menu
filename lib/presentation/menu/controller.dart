@@ -60,13 +60,10 @@ class _MenuController extends GetxController {
         isScrollControlled: true,
         barrierColor: Colors.black.withOpacity(0.8),
         builder: (context) {
-          return FractionallySizedBox(
-            heightFactor: 0.8,
-            child: CategoryPage(
-              data: data.value!,
-              selectedCategory: selectedCategory.value!,
-              selectedMenu: selectedMenu.value!,
-            ),
+          return CategoryPage(
+            data: data.value!,
+            selectedCategory: selectedCategory.value!,
+            selectedMenu: selectedMenu.value!,
           );
         },
       );
@@ -86,6 +83,8 @@ class _MenuController extends GetxController {
       context: context,
       backgroundColor: Colors.transparent,
       barrierColor: Colors.black.withOpacity(0.8),
+      isDismissible: true,
+      isScrollControlled: true,
       builder: (context) {
         return DishPage(dishEntry: dishEntry);
       },

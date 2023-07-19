@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 extension Responsive on num {
@@ -7,8 +8,20 @@ extension Responsive on num {
     return this * widthFactor;
   }
 
+  double toAutoScaledWidthWithContext(BuildContext context) {
+    final widthFactor = ResponsiveDesign.widthScaleFactorWithContext(context);
+
+    return this * widthFactor;
+  }
+
   double get toAutoScaledHeight {
     final widthFactor = ResponsiveDesign.widthScaleFactor;
+
+    return this * widthFactor;
+  }
+
+  double toAutoScaledHeightWithContext(BuildContext context) {
+    final widthFactor = ResponsiveDesign.widthScaleFactorWithContext(context);
 
     return this * widthFactor;
   }
@@ -23,4 +36,8 @@ class ResponsiveDesign {
 
   static double get heightScaleFactor => _deviceHeight / _designHeight;
   static double get widthScaleFactor => _deviceWidth / _designWidth;
+
+  static double heightScaleFactorWithContext(BuildContext context) =>
+      MediaQuery.of(context).size.height / _designHeight;
+  static double widthScaleFactorWithContext(BuildContext context) => MediaQuery.of(context).size.width / _designWidth;
 }

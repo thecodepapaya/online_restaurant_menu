@@ -17,8 +17,8 @@ class Fab extends StatelessWidget {
         ),
         padding: MaterialStatePropertyAll(
           EdgeInsets.symmetric(
-            horizontal: 24.toAutoScaledWidth,
-            vertical: 8.toAutoScaledHeight,
+            horizontal: 20.toAutoScaledWidth,
+            vertical: 12.toAutoScaledHeight,
           ),
         ),
         backgroundColor: const MaterialStatePropertyAll(Color(0xFF121212)),
@@ -34,7 +34,7 @@ class Fab extends StatelessWidget {
             height: 16.toAutoScaledHeight,
             width: 16.toAutoScaledWidth,
           ),
-          8.toHorizontalSpace,
+          8.toAutoScaledWidth.toHorizontalSpace,
           Text(
             'View Categories',
             style: TextStyle(
