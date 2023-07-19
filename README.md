@@ -1,22 +1,35 @@
-# explorex
+# Google Play payment demo
 
-A new Flutter project.
+A Flutter project to to replicate online restaurant menu. 
 
-## Getting Started
+## Dependencies
 
-This project is a starting point for a Flutter application.
+The project makes use of the following open source packages
 
-A few resources to get you started if this is your first Flutter project:
+- [get](https://pub.dev/packages/get) - for state management demo.
+- [google_fonts](https://pub.dev/packages/google_fonts) - To add custom fonts to the application.
+- [flutter_svg](https://pub.dev/packages/flutter_svg) - For easy rendering of svg assets.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Build and run locally
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Clone the repo 
+ 
+```
+git clone https://github.com/thecodepapaya/online_restaurant_menu.git
+```
+
+Build and run locally 
+```
+cd online_restaurant_menu
+flutter run
+```
+## Demo
+
+https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/07628b3c-fbbc-4e9d-b361-adf84866d6de
 
 
-Image resources
-<a href="https://www.freepik.com/free-photo/tasty-burger-isolated-white-background-fresh-hamburger-fastfood-with-beef-cheese_38117312.htm#query=food%20burger&position=0&from_view=keyword&track=ais">Image by svstudioart</a> on Freepik
+## Releases
 
-Image by <a href="https://www.freepik.com/free-photo/tasty-american-beer-composition_13296001.htm#query=food%20drink&position=8&from_view=search&track=ais">Freepik</a>
+Checkout the [releases section](https://github.com/thecodepapaya/online_restaurant_menu/releases/latest) for the latest APK from the code.
+
+
