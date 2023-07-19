@@ -30,80 +30,83 @@ class _CategoryCardState extends State<CategoryCard> {
           right: 16.toAutoScaledWidthWithContext(context),
           bottom: 16.toAutoScaledWidthWithContext(context),
         ),
-        child: Theme(
-          data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
-          child: ExpansionTile(
-            key: ValueKey(isInitiallyExpanded),
-            initiallyExpanded: isInitiallyExpanded,
-            tilePadding: EdgeInsets.symmetric(
-              vertical: 8.toAutoScaledWidthWithContext(context),
-              horizontal: 16.toAutoScaledWidthWithContext(context),
-            ),
-            trailing: trailingWidget(isExpanded),
-            onExpansionChanged: (bool expanded) {
-              setState(() {
-                isExpanded = expanded;
-              });
-            },
-            backgroundColor: Colors.white,
-            collapsedBackgroundColor: Colors.white,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.toAutoScaledWidthWithContext(context)),
-            ),
-            collapsedShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(12.toAutoScaledWidthWithContext(context)),
-            ),
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(
-                  child: Text(
-                    widget.categoryName,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontSize: 12.toAutoScaledWidthWithContext(context),
-                      fontWeight: FontWeight.w600,
-                    ),
+        child: ExpansionTile(
+          key: ValueKey(isInitiallyExpanded),
+          initiallyExpanded: isInitiallyExpanded,
+          childrenPadding: EdgeInsets.zero,
+          tilePadding: EdgeInsets.symmetric(
+            vertical: 8.toAutoScaledHeightWithContext(context),
+            horizontal: 16.toAutoScaledWidthWithContext(context),
+          ),
+          trailing: trailingWidget(isExpanded),
+          onExpansionChanged: (bool expanded) {
+            setState(() {
+              isExpanded = expanded;
+            });
+          },
+          backgroundColor: Colors.white,
+          collapsedBackgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          collapsedShape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(12),
+          ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Text(
+                  widget.categoryName,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                    fontSize: 12.toAutoScaledWidthWithContext(context),
+                    fontWeight: FontWeight.w600,
                   ),
                 ),
-                Text(
+              ),
+              Expanded(
+                flex: 1,
+                child: Text(
                   '${widget.entries.length} items',
+                  textAlign: TextAlign.end,
                   style: TextStyle(
                     fontSize: 12.toAutoScaledWidthWithContext(context),
                     color: const Color(0xFFA9AAAE),
                   ),
                 ),
-              ],
-            ),
-            children: <Widget>[
-              const Divider(
-                height: 2,
-                color: Color(0xFFE5E6EF),
               ),
-              ...widget.entries.asMap().entries.map((e) {
-                final selectedMeatPref = controller.selectedMeatStatus.value;
-                final isMeatPrefEmpty = selectedMeatPref == null;
+            ],
+          ),
+          children: <Widget>[
+            const Divider(
+              height: 2,
+              color: Color(0xFFE5E6EF),
+            ),
+            ...widget.entries.asMap().entries.map((e) {
+              final selectedMeatPref = controller.selectedMeatStatus.value;
+              final isMeatPrefEmpty = selectedMeatPref == null;
 
-                if (isMeatPrefEmpty) {
+              if (isMeatPrefEmpty) {
+                return DishCard(
+                  isFirst: e.key == 0,
+                  entry: e.value,
+                );
+              } else {
+                final isMeatPrefMatch = e.value.dish.meatStatus == selectedMeatPref;
+                if (isMeatPrefMatch) {
                   return DishCard(
                     isFirst: e.key == 0,
                     entry: e.value,
                   );
                 } else {
-                  final isMeatPrefMatch = e.value.dish.meatStatus == selectedMeatPref;
-                  if (isMeatPrefMatch) {
-                    return DishCard(
-                      isFirst: e.key == 0,
-                      entry: e.value,
-                    );
-                  } else {
-                    return SizedBox.shrink();
-                  }
+                  return SizedBox.shrink();
                 }
-              }).toList(),
-            ],
-          ),
+              }
+            }).toList(),
+          ],
         ),
       );
     });
@@ -114,7 +117,7 @@ class _CategoryCardState extends State<CategoryCard> {
       height: 20.toAutoScaledHeightWithContext(context),
       width: 20.toAutoScaledWidthWithContext(context),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(4.toAutoScaledWidthWithContext(context)),
+        borderRadius: BorderRadius.circular(4),
         color: const Color(0xFFE5E6EF),
       ),
       child: Center(

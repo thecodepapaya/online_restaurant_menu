@@ -76,7 +76,7 @@ class PreferenceButton extends StatelessWidget {
               border: Border.all(
                 width: 0.5,
               ),
-              borderRadius: BorderRadius.circular(4.toAutoScaledWidthWithContext(context)),
+              borderRadius: BorderRadius.circular(4),
             ),
             child: Row(
               children: [

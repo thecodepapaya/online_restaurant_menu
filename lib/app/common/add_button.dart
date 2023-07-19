@@ -34,27 +34,5 @@ class AddButton extends StatelessWidget {
         ),
       ),
     );
-
-    // return ElevatedButton(
-    //   onPressed: onPressed,
-    //   style: OutlinedButton.styleFrom(
-    //     elevation: 0,
-    //     fixedSize: Size(119.toAutoScaledWidthWithContext(context), 42.toAutoScaledHeightWithContext(context)),
-    //     padding: EdgeInsets.zero,
-    //     side: const BorderSide(
-    //       color: Color(0xFF3D54FF),
-    //     ),
-    //     shape: RoundedRectangleBorder(
-    //       borderRadius: BorderRadius.circular(4),
-    //     ),
-    //   ),
-    //   child: Text(
-    //     'Add',
-    //     style: TextStyle(
-    //       fontSize: 12.toAutoScaledWidthWithContext(context),
-    //       color: const Color(0xFF3D54FF),
-    //     ),
-    //   ),
-    // );
   }
 }
