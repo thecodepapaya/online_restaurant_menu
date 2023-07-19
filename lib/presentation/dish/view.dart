@@ -47,20 +47,7 @@ class _DishPageState extends State<DishPage> {
           const Expanded(child: SizedBox()),
           const _CloseButton(),
           8.toAutoScaledHeight.toVerticalSpace,
-          Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 16.toAutoScaledHeight,
-              horizontal: 16.toAutoScaledWidth,
-            ),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(16),
-                topRight: Radius.circular(16),
-              ),
-            ),
-            child: const _ImageHeader(),
-          ),
+          const _ImageHeader(),
           const _DishHeader(),
           const _ButtonRow(),
         ],

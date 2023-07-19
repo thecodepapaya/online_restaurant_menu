@@ -12,7 +12,13 @@ class _DishHeader extends StatelessWidget {
     final description = dish.description?.isEmpty ?? true ? "No description" : dish.description!;
 
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          width: 0,
+          color: Colors.white,
+        ),
+      ),
       padding: EdgeInsets.only(
         bottom: 16.toAutoScaledHeight,
         left: 16.toAutoScaledWidth,
