@@ -55,9 +55,14 @@ class MenuPage extends StatelessWidget {
                   child: Column(
                     children: [
                       16.toAutoScaledHeight.toVerticalSpace,
+                      CategoryCard(
+                        categoryName: "Recommended",
+                        entries: controller.recommendedDishes.value,
+                      ),
                       ...categorySortedData!.entries
                           .map(
                             (e) => CategoryCard(
+                              key: GlobalObjectKey(e.key),
                               categoryName: e.key,
                               entries: e.value,
                             ),

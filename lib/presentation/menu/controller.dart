@@ -8,6 +8,7 @@ class _MenuController extends GetxController {
   Rx<ExplorexData?> data = Rx<ExplorexData?>(null);
   Rx<Menu?> selectedMenu = Rx<Menu?>(null);
   Rx<String?> selectedCategory = Rx<String?>(null);
+  Rx<List<Entry>> recommendedDishes = Rx<List<Entry>>([]);
 
   // State variables END
 
@@ -36,6 +37,7 @@ class _MenuController extends GetxController {
       final initialCategory = initialMenu.entries.first.category;
 
       _updateSelectedMenu(newMenu: initialMenu, newCategory: initialCategory);
+      _populateRecommended();
     }
   }
 
@@ -64,6 +66,12 @@ class _MenuController extends GetxController {
 
       if (updatedSelection != null) {
         _updateSelectedMenu(newMenu: updatedSelection.first, newCategory: updatedSelection.last);
+
+        Scrollable.ensureVisible(
+          GlobalObjectKey(updatedSelection.last).currentContext!,
+          // alignmentPolicy: ScrollPositionAlignmentPolicy.keepVisibleAtStart,
+          // alignment: 200,
+        );
       }
     }
   }
@@ -77,5 +85,17 @@ class _MenuController extends GetxController {
     selectedCategory.value = newCategory;
 
     selectedMenu.value?.populateCategoryWiseMenuEntries();
+  }
+
+  void _populateRecommended() {
+    final data = <Entry>[];
+
+    selectedMenu.value?.entries.forEach((entry) {
+      if (entry.isRecommended) {
+        data.add(entry);
+      }
+    });
+
+    recommendedDishes.value = data;
   }
 }

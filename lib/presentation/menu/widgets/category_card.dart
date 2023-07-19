@@ -22,7 +22,7 @@ class _CategoryCardState extends State<CategoryCard> {
     final controller = Get.find<_MenuController>();
 
     return Obx(() {
-      isExpanded = controller.selectedCategory.value == widget.categoryName;
+      final isInitiallyExpanded = controller.selectedCategory.value == widget.categoryName;
 
       return Padding(
         padding: EdgeInsets.only(
@@ -33,7 +33,8 @@ class _CategoryCardState extends State<CategoryCard> {
         child: Theme(
           data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
           child: ExpansionTile(
-            initiallyExpanded: isExpanded,
+            key: ValueKey(isInitiallyExpanded),
+            initiallyExpanded: isInitiallyExpanded,
             tilePadding: EdgeInsets.symmetric(
               vertical: 0.toAutoScaledHeight,
               horizontal: 16.toAutoScaledWidth,
@@ -71,7 +72,7 @@ class _CategoryCardState extends State<CategoryCard> {
                   '${widget.entries.length} items',
                   style: TextStyle(
                     fontSize: 12.toAutoScaledWidth,
-                    color: Color(0xFFA9AAAE),
+                    color: const Color(0xFFA9AAAE),
                   ),
                 ),
               ],
@@ -82,16 +83,12 @@ class _CategoryCardState extends State<CategoryCard> {
                 color: Color(0xFFE5E6EF),
               ),
               ...widget.entries
+                  .asMap()
+                  .entries
                   .map(
-                    (e) => DishCard(
-                      isFirst: true,
-                      entry: e,
-                    ),
+                    (e) => DishCard(isFirst: e.key == 0, entry: e.value),
                   )
                   .toList(),
-              // DishCard(isFirst: true),
-              // DishCard(isFirst: false),
-              // DishCard(isFirst: false),
             ],
           ),
         ),
@@ -105,7 +102,7 @@ class _CategoryCardState extends State<CategoryCard> {
       width: 20.toAutoScaledWidth,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4.toAutoScaledWidth),
-        color: Color(0xFFE5E6EF),
+        color: const Color(0xFFE5E6EF),
       ),
       child: Center(
         child: Icon(

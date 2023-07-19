@@ -5,6 +5,10 @@ class RecommendedBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<_MenuController>();
+
+    final recommendedCount = controller.recommendedDishes.value.length;
+
     return Container(
       padding: EdgeInsets.symmetric(
         vertical: 8.toAutoScaledHeight,
@@ -12,7 +16,7 @@ class RecommendedBar extends StatelessWidget {
       ),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Color(0xFF7f7f7f).withOpacity(0.05),
+        color: const Color(0xFF7f7f7f).withOpacity(0.05),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -21,14 +25,14 @@ class RecommendedBar extends StatelessWidget {
             'Recommended in Food Menu',
             style: TextStyle(
               fontSize: 10.toAutoScaledWidth,
-              color: Color(0xFF121212),
+              color: const Color(0xFF121212),
             ),
           ),
           Text(
-            '(3 items)',
+            '($recommendedCount items)',
             style: TextStyle(
               fontSize: 10.toAutoScaledWidth,
-              color: Color(0xFF5a5a5a),
+              color: const Color(0xFF5a5a5a),
             ),
           ),
         ],
