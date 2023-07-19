@@ -9,7 +9,7 @@ class _DishHeader extends StatelessWidget {
 
     final dish = controller.dishEntry.dish;
 
-    final description = dish.description?.isEmpty ?? true ? "No description" : dish.description!;
+    final description = dish.description?.isEmpty ?? true ? "No description " : dish.description!;
 
     return Container(
       decoration: BoxDecoration(
@@ -47,12 +47,17 @@ class _DishHeader extends StatelessWidget {
           ),
           16.toAutoScaledHeight.toVerticalSpace,
           ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: 100.toAutoScaledHeight),
-            child: Text(
-              description,
-              style: TextStyle(
-                fontSize: 12.toAutoScaledWidth,
-                color: Color(0xFFA9AAAE),
+            constraints: BoxConstraints(
+              maxHeight: 78.toAutoScaledHeight,
+              minHeight: 78.toAutoScaledHeight,
+            ),
+            child: SingleChildScrollView(
+              child: Text(
+                description,
+                style: TextStyle(
+                  fontSize: 12.toAutoScaledWidth,
+                  color: Color(0xFFA9AAAE),
+                ),
               ),
             ),
           ),

@@ -10,12 +10,18 @@ class _ButtonRow extends StatelessWidget {
     final price = controller.dishEntry.sellingPrice;
 
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(
+          width: 0,
+          color: Colors.white,
+        ),
+      ),
       padding: EdgeInsets.only(
         right: 16.toAutoScaledWidth,
         left: 32.toAutoScaledWidth,
         bottom: 16.toAutoScaledHeight,
-        top: 50.toAutoScaledHeight,
+        top: 16.toAutoScaledHeight,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
