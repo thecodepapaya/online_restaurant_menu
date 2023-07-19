@@ -2,20 +2,25 @@ import 'package:get/get.dart';
 
 extension Responsive on num {
   double get toAutoScaledWidth {
-    final widthFactor = ResponsiveDesign.designRatio / ResponsiveDesign.deviceRatio;
+    final widthFactor = ResponsiveDesign.widthScaleFactor;
 
     return this * widthFactor;
   }
 
   double get toAutoScaledHeight {
-    final widthFactor = ResponsiveDesign.designRatio / ResponsiveDesign.deviceRatio;
+    final widthFactor = ResponsiveDesign.widthScaleFactor;
 
     return this * widthFactor;
   }
 }
 
 class ResponsiveDesign {
-  static const designRatio = 375 / 812;
+  static const _designWidth = 375;
+  static const _designHeight = 812;
 
-  static final deviceRatio = Get.mediaQuery.size.aspectRatio;
+  static final _deviceHeight = Get.mediaQuery.size.height;
+  static final _deviceWidth = Get.mediaQuery.size.width;
+
+  static double get heightScaleFactor => _deviceHeight / _designHeight;
+  static double get widthScaleFactor => _deviceWidth / _designWidth;
 }

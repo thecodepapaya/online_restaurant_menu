@@ -36,7 +36,7 @@ class _CategoryCardState extends State<CategoryCard> {
             key: ValueKey(isInitiallyExpanded),
             initiallyExpanded: isInitiallyExpanded,
             tilePadding: EdgeInsets.symmetric(
-              vertical: 0.toAutoScaledHeight,
+              vertical: 8.toAutoScaledWidth,
               horizontal: 16.toAutoScaledWidth,
             ),
             trailing: trailingWidget(isExpanded),
@@ -56,8 +56,7 @@ class _CategoryCardState extends State<CategoryCard> {
             title: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(
-                  width: 220.toAutoScaledWidth,
+                Expanded(
                   child: Text(
                     widget.categoryName,
                     maxLines: 1,

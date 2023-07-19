@@ -73,7 +73,7 @@ class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerP
               borderRadius: BorderRadius.circular(40),
             ),
             padding: EdgeInsets.only(
-              top: 24 - padding.toAutoScaledHeight,
+              top: 24.toAutoScaledHeight - padding.toAutoScaledHeight,
               left: 10.toAutoScaledWidth,
               right: 10.toAutoScaledWidth,
               bottom: 12.toAutoScaledHeight,
@@ -86,11 +86,11 @@ class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerP
                   size: 24.toAutoScaledWidth,
                 ),
                 4.toAutoScaledHeight.toVerticalSpace,
-                const Text(
+                Text(
                   'Scroll\nDown',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 8,
+                    fontSize: 8.toAutoScaledWidth,
                   ),
                 ),
               ],

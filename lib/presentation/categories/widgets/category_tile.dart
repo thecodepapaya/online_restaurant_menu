@@ -50,7 +50,7 @@ class _CategoryTile extends StatelessWidget {
             ),
             12.toAutoScaledWidth.toHorizontalSpace,
             SizedBox(
-              width: 250.toAutoScaledWidth,
+              // width: 250.toAutoScaledWidth,
               child: Text(
                 value,
                 maxLines: 2,

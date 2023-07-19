@@ -19,8 +19,8 @@ class DishCard extends StatelessWidget {
       child: Column(
         children: [
           if (!isFirst)
-            const Divider(
-              height: 2,
+            Divider(
+              height: 2.toAutoScaledHeight,
               color: Color(0xFFE5E6EF),
             ),
           Container(
@@ -61,7 +61,7 @@ class _TextData extends StatelessWidget {
         controller._navigateToDishScreen(entry);
       },
       child: SizedBox(
-        width: 200.toAutoScaledWidth,
+        width: 175.toAutoScaledWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -89,7 +89,7 @@ class _TextData extends StatelessWidget {
             12.toAutoScaledHeight.toVerticalSpace,
             Text(
               entry.dish.description ?? '',
-              maxLines: 1,
+              maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
                 fontSize: 10.toAutoScaledWidth,
@@ -159,8 +159,8 @@ class _ImageData extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            left: 10,
-            top: 0,
+            left: 10.toAutoScaledWidth,
+            top: 0.toAutoScaledHeight,
             child: InkWell(
               onTap: () {
                 controller._navigateToDishScreen(entry);
