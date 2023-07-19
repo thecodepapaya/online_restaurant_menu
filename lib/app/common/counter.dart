@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 
 class DishCounter extends StatefulWidget {
   final int initialCount;
+  final double parentMaxWidth;
 
   const DishCounter({
     super.key,
     this.initialCount = 0,
+    required this.parentMaxWidth,
   });
 
   @override
@@ -46,10 +48,13 @@ class _DishCounterState extends State<DishCounter> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _Button.dec(onPressed: _onDecrease),
+              _Button.dec(
+                onPressed: _onDecrease,
+                parentMaxWidth: widget.parentMaxWidth,
+              ),
               Container(
-                height: 42.toAutoScaledHeightWithContext(context),
-                width: 47.toAutoScaledWidthWithContext(context),
+                height: 42.toAutoScaledHeightWithParent(widget.parentMaxWidth),
+                width: 47.toAutoScaledWidthWithParent(widget.parentMaxWidth),
                 decoration: BoxDecoration(
                   color: const Color(0xFFE0E4FF),
                   border: Border.all(
@@ -61,14 +66,17 @@ class _DishCounterState extends State<DishCounter> {
                     '$count',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 12.toAutoScaledWidthWithContext(context),
+                      fontSize: 12.toAutoScaledWidthWithParent(widget.parentMaxWidth),
                       fontWeight: FontWeight.w600,
                       color: const Color(0xFF3D54FF),
                     ),
                   ),
                 ),
               ),
-              _Button.inc(onPressed: _onIncrease),
+              _Button.inc(
+                onPressed: _onIncrease,
+                parentMaxWidth: widget.parentMaxWidth,
+              ),
             ],
           );
   }
@@ -77,10 +85,19 @@ class _DishCounterState extends State<DishCounter> {
 class _Button extends StatelessWidget {
   final IconData symbol;
   final VoidCallback onPressed;
+  final double parentMaxWidth;
 
-  const _Button.dec({super.key, required this.onPressed}) : symbol = Icons.remove;
+  const _Button.dec({
+    super.key,
+    required this.onPressed,
+    required this.parentMaxWidth,
+  }) : symbol = Icons.remove;
 
-  const _Button.inc({super.key, required this.onPressed}) : symbol = Icons.add;
+  const _Button.inc({
+    super.key,
+    required this.onPressed,
+    required this.parentMaxWidth,
+  }) : symbol = Icons.add;
 
   @override
   Widget build(BuildContext context) {
@@ -89,8 +106,8 @@ class _Button extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 42.toAutoScaledHeightWithContext(context),
-        width: 36.toAutoScaledWidthWithContext(context),
+        height: 42.toAutoScaledHeightWithParent(parentMaxWidth),
+        width: 36.toAutoScaledWidthWithParent(parentMaxWidth),
         decoration: BoxDecoration(
           color: const Color(0xFF3D54FF),
           borderRadius: BorderRadius.only(
@@ -102,7 +119,7 @@ class _Button extends StatelessWidget {
         ),
         child: Icon(
           symbol,
-          size: 16.toAutoScaledWidthWithContext(context),
+          size: 16.toAutoScaledWidthWithParent(parentMaxWidth),
           color: Colors.white,
         ),
       ),

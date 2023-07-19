@@ -10,29 +10,33 @@ class MenuType extends StatelessWidget {
     final menus = controller.data.description.menus;
     final menuTypeLength = menus.length;
 
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.toAutoScaledWidthWithContext(context)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "MENU TYPE ($menuTypeLength)",
-            style: TextStyle(
-              color: const Color(0xFFA9AAAE),
-              fontSize: 12.toAutoScaledWidthWithContext(context),
-              fontWeight: FontWeight.w600,
+    return Obx(() {
+      final maxWidth = controller.maxWidth.value;
+
+      return Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.toAutoScaledWidthWithParent(maxWidth)),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              "MENU TYPE ($menuTypeLength)",
+              style: TextStyle(
+                color: const Color(0xFFA9AAAE),
+                fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                fontWeight: FontWeight.w600,
+              ),
             ),
-          ),
-          ...menus
-              .map(
-                (m) => Padding(
-                  padding: EdgeInsets.only(top: 16.toAutoScaledHeightWithContext(context)),
-                  child: _CategoryImage(menu: m),
-                ),
-              )
-              .toList(),
-        ],
-      ),
-    );
+            ...menus
+                .map(
+                  (m) => Padding(
+                    padding: EdgeInsets.only(top: 16.toAutoScaledHeightWithParent(maxWidth)),
+                    child: _CategoryImage(menu: m),
+                  ),
+                )
+                .toList(),
+          ],
+        ),
+      );
+    });
   }
 }

@@ -11,6 +11,7 @@ class _CategoryList extends StatelessWidget {
       final selectedMenu = controller.selectedMenu.value;
       final selectedCategory = controller.selectedCategory.value;
       final categoriesMap = controller.generateCategoriesMap(selectedMenu);
+      final maxWidth = controller.maxWidth.value;
 
       return Expanded(
         child: Container(
@@ -18,7 +19,7 @@ class _CategoryList extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                8.toAutoScaledHeightWithContext(context).toVerticalSpace,
+                8.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
                 ...categoriesMap.entries
                     .map(
                       (e) => _CategoryTile(
@@ -28,7 +29,7 @@ class _CategoryList extends StatelessWidget {
                       ),
                     )
                     .toList(),
-                20.toAutoScaledHeightWithContext(context).toVerticalSpace,
+                20.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
               ],
             ),
           ),

@@ -5,15 +5,19 @@ class _CloseButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _ = Get.find<_DishController>();
+    final controller = Get.find<_DishController>();
 
-    return IconButton(
-      onPressed: Get.back,
-      icon: SvgPicture.asset(
-        "assets/icons/close_icon.svg",
-        height: 24.toAutoScaledHeightWithContext(context),
-        width: 24.toAutoScaledWidthWithContext(context),
-      ),
-    );
+    return Obx(() {
+      final maxWidth = controller.maxWidth.value;
+
+      return IconButton(
+        onPressed: Get.back,
+        icon: SvgPicture.asset(
+          "assets/icons/close_icon.svg",
+          height: 24.toAutoScaledHeightWithParent(maxWidth),
+          width: 24.toAutoScaledWidthWithParent(maxWidth),
+        ),
+      );
+    });
   }
 }

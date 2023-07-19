@@ -9,62 +9,66 @@ class _ButtonRow extends StatelessWidget {
 
     final price = controller.dishEntry.sellingPrice;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
-          width: 0,
+    return Obx(() {
+      final maxWidth = controller.maxWidth.value;
+
+      return Container(
+        decoration: BoxDecoration(
           color: Colors.white,
+          border: Border.all(
+            width: 0,
+            color: Colors.white,
+          ),
         ),
-      ),
-      padding: EdgeInsets.only(
-        right: 16.toAutoScaledWidthWithContext(context),
-        left: 32.toAutoScaledWidthWithContext(context),
-        bottom: 16.toAutoScaledHeightWithContext(context),
-        top: 16.toAutoScaledHeightWithContext(context),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          const DishCounter(initialCount: 1),
-          16.toAutoScaledWidthWithContext(context).toHorizontalSpace,
-          InkWell(
-            onTap: Get.back,
-            child: Container(
-              width: 176.toAutoScaledWidthWithContext(context),
-              height: 42.toAutoScaledHeightWithContext(context),
-              padding: EdgeInsets.symmetric(
-                horizontal: 16.toAutoScaledWidthWithContext(context),
-              ),
-              decoration: BoxDecoration(
-                color: Color(0xFF3D54FF),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Add to Cart",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12.toAutoScaledWidthWithContext(context),
+        padding: EdgeInsets.only(
+          right: 16.toAutoScaledWidthWithParent(maxWidth),
+          left: 32.toAutoScaledWidthWithParent(maxWidth),
+          bottom: 16.toAutoScaledHeightWithParent(maxWidth),
+          top: 16.toAutoScaledHeightWithParent(maxWidth),
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            DishCounter(initialCount: 1, parentMaxWidth: maxWidth),
+            16.toAutoScaledWidthWithParent(maxWidth).toHorizontalSpace,
+            InkWell(
+              onTap: Get.back,
+              child: Container(
+                width: 176.toAutoScaledWidthWithParent(maxWidth),
+                height: 42.toAutoScaledHeightWithParent(maxWidth),
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.toAutoScaledWidthWithParent(maxWidth),
+                ),
+                decoration: BoxDecoration(
+                  color: Color(0xFF3D54FF),
+                  borderRadius: BorderRadius.circular(8),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Add to Cart",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                      ),
                     ),
-                  ),
-                  Text(
-                    "₹$price",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12.toAutoScaledWidthWithContext(context),
+                    Text(
+                      "₹$price",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 }

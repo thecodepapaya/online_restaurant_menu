@@ -11,29 +11,33 @@ class _CategoryHeader extends StatelessWidget {
 
       final categoriesCount = controller.generateCategoriesMap(selectedMenu).length;
 
-      return Container(
-        decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(
-            width: 0,
+      return Obx(() {
+        final maxWidth = controller.maxWidth.value;
+
+        return Container(
+          decoration: BoxDecoration(
             color: Colors.white,
+            border: Border.all(
+              width: 0,
+              color: Colors.white,
+            ),
           ),
-        ),
-        padding: EdgeInsets.only(
-          top: 24.toAutoScaledHeightWithContext(context),
-          bottom: 8.toAutoScaledHeightWithContext(context),
-          left: 16.toAutoScaledWidthWithContext(context),
-          right: 16.toAutoScaledWidthWithContext(context),
-        ),
-        child: Text(
-          "CATEGORIES ($categoriesCount)",
-          style: TextStyle(
-            fontSize: 12.toAutoScaledWidthWithContext(context),
-            fontWeight: FontWeight.w600,
-            color: Color(0xFFA9AAAE),
+          padding: EdgeInsets.only(
+            top: 24.toAutoScaledHeightWithParent(maxWidth),
+            bottom: 8.toAutoScaledHeightWithParent(maxWidth),
+            left: 16.toAutoScaledWidthWithParent(maxWidth),
+            right: 16.toAutoScaledWidthWithParent(maxWidth),
           ),
-        ),
-      );
+          child: Text(
+            "CATEGORIES ($categoriesCount)",
+            style: TextStyle(
+              fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+              fontWeight: FontWeight.w600,
+              color: Color(0xFFA9AAAE),
+            ),
+          ),
+        );
+      });
     });
   }
 }

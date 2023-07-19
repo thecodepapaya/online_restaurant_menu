@@ -184,9 +184,9 @@ class _ImageData extends StatelessWidget {
               ),
             ),
           ),
-          const Align(
+          Align(
             alignment: Alignment.bottomCenter,
-            child: DishCounter(),
+            child: DishCounter(parentMaxWidth: Get.size.width),
           ),
         ],
       ),

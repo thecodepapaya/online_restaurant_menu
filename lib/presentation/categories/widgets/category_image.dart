@@ -16,6 +16,7 @@ class _CategoryImage extends StatelessWidget {
       () {
         final selectedMenu = controller.selectedMenu;
         final isSelected = selectedMenu.value.id == menu.id;
+        final maxWidth = controller.maxWidth.value;
 
         return InkWell(
           onTap: () {
@@ -50,19 +51,19 @@ class _CategoryImage extends StatelessWidget {
                       errorBuilder: (context, error, stackTrace) {
                         return Image.asset(
                           "assets/images/no_image.jpeg",
-                          height: 36.toAutoScaledHeightWithContext(context),
-                          width: 164.toAutoScaledWidthWithContext(context),
+                          height: 36.toAutoScaledHeightWithParent(maxWidth),
+                          width: 164.toAutoScaledWidthWithParent(maxWidth),
                           fit: BoxFit.cover,
                         );
                       },
-                      height: 36.toAutoScaledHeightWithContext(context),
-                      width: 164.toAutoScaledWidthWithContext(context),
+                      height: 36.toAutoScaledHeightWithParent(maxWidth),
+                      width: 164.toAutoScaledWidthWithParent(maxWidth),
                       fit: BoxFit.cover,
                     ),
                   ),
                   Positioned(
-                    bottom: 9.toAutoScaledHeightWithContext(context),
-                    left: 16.toAutoScaledWidthWithContext(context),
+                    bottom: 9.toAutoScaledHeightWithParent(maxWidth),
+                    left: 16.toAutoScaledWidthWithParent(maxWidth),
                     child: SizedBox(
                       width: 100,
                       child: Text(
@@ -70,7 +71,7 @@ class _CategoryImage extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12.toAutoScaledWidthWithContext(context),
+                          fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
                         ),

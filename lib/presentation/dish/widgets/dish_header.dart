@@ -11,59 +11,63 @@ class _DishHeader extends StatelessWidget {
 
     final description = dish.description?.isEmpty ?? true ? "No description " : dish.description!;
 
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
-          width: 0,
+    return Obx(() {
+      final maxWidth = controller.maxWidth.value;
+
+      return Container(
+        decoration: BoxDecoration(
           color: Colors.white,
+          border: Border.all(
+            width: 0,
+            color: Colors.white,
+          ),
         ),
-      ),
-      padding: EdgeInsets.only(
-        bottom: 16.toAutoScaledHeightWithContext(context),
-        left: 16.toAutoScaledWidthWithContext(context),
-        right: 16.toAutoScaledWidthWithContext(context),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            children: [
-              SvgPicture.asset(
-                "assets/icons/${_meatStatusAsset(dish.meatStatus)}",
-                height: 16.toAutoScaledHeightWithContext(context),
-                width: 16.toAutoScaledWidthWithContext(context),
+        padding: EdgeInsets.only(
+          bottom: 16.toAutoScaledHeightWithParent(maxWidth),
+          left: 16.toAutoScaledWidthWithParent(maxWidth),
+          right: 16.toAutoScaledWidthWithParent(maxWidth),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/icons/${_meatStatusAsset(dish.meatStatus)}",
+                  height: 16.toAutoScaledHeightWithParent(maxWidth),
+                  width: 16.toAutoScaledWidthWithParent(maxWidth),
+                ),
+                8.toAutoScaledWidthWithParent(maxWidth).toHorizontalSpace,
+                Text(
+                  dish.name,
+                  style: TextStyle(
+                    fontSize: 16.toAutoScaledWidthWithParent(maxWidth),
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ),
+            16.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
+            ConstrainedBox(
+              constraints: BoxConstraints(
+                maxHeight: 78.toAutoScaledHeightWithParent(maxWidth),
+                minHeight: 78.toAutoScaledHeightWithParent(maxWidth),
               ),
-              8.toAutoScaledWidthWithContext(context).toHorizontalSpace,
-              Text(
-                dish.name,
-                style: TextStyle(
-                  fontSize: 16.toAutoScaledWidthWithContext(context),
-                  fontWeight: FontWeight.w600,
+              child: SingleChildScrollView(
+                child: Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                    color: Color(0xFFA9AAAE),
+                  ),
                 ),
               ),
-            ],
-          ),
-          16.toAutoScaledHeightWithContext(context).toVerticalSpace,
-          ConstrainedBox(
-            constraints: BoxConstraints(
-              maxHeight: 78.toAutoScaledHeightWithContext(context),
-              minHeight: 78.toAutoScaledHeightWithContext(context),
             ),
-            child: SingleChildScrollView(
-              child: Text(
-                description,
-                style: TextStyle(
-                  fontSize: 12.toAutoScaledWidthWithContext(context),
-                  color: Color(0xFFA9AAAE),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
+          ],
+        ),
+      );
+    });
   }
 
   String _meatStatusAsset(MeatStatus? meatStatus) {

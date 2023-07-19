@@ -14,6 +14,7 @@ class _CategoryController extends GetxController {
   ExplorexData data;
   late Rx<Menu> selectedMenu;
   late Rx<String> selectedCategory;
+  RxDouble maxWidth = Get.size.width.obs;
   // State variables END
 
   bool get hasData => data.code == 0;

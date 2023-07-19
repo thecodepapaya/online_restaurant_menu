@@ -7,13 +7,17 @@ class _CloseButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<_CategoryController>();
 
-    return IconButton(
-      onPressed: controller._returnToMenuScreen,
-      icon: SvgPicture.asset(
-        "assets/icons/close_icon.svg",
-        height: 24.toAutoScaledHeightWithContext(context),
-        width: 24.toAutoScaledWidthWithContext(context),
-      ),
-    );
+    return Obx(() {
+      final maxWidth = controller.maxWidth.value;
+
+      return IconButton(
+        onPressed: controller._returnToMenuScreen,
+        icon: SvgPicture.asset(
+          "assets/icons/close_icon.svg",
+          height: 24.toAutoScaledHeightWithParent(maxWidth),
+          width: 24.toAutoScaledWidthWithParent(maxWidth),
+        ),
+      );
+    });
   }
 }

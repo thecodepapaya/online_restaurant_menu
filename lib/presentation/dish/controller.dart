@@ -5,6 +5,8 @@ class _DishController extends GetxController {
 
   final Entry dishEntry;
 
+  RxDouble maxWidth = Get.size.width.obs;
+
   @override
   void onReady() {
     log('onReady');

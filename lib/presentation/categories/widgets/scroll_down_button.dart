@@ -61,43 +61,49 @@ class _ScrollDownButtonState extends State<_ScrollDownButton> with SingleTickerP
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Padding(
-        padding: EdgeInsets.only(bottom: padding.toAutoScaledHeightWithContext(context)),
-        child: Material(
-          elevation: 26,
-          borderRadius: BorderRadius.circular(40),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(40),
-            ),
-            padding: EdgeInsets.only(
-              top: 24.toAutoScaledHeightWithContext(context) - padding.toAutoScaledHeightWithContext(context),
-              left: 10.toAutoScaledWidthWithContext(context),
-              right: 10.toAutoScaledWidthWithContext(context),
-              bottom: 12.toAutoScaledHeightWithContext(context),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(
-                  Icons.keyboard_arrow_down_rounded,
-                  size: 24.toAutoScaledWidthWithContext(context),
-                ),
-                4.toAutoScaledHeightWithContext(context).toVerticalSpace,
-                Text(
-                  'Scroll\nDown',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 8.toAutoScaledWidthWithContext(context),
+    final controller = Get.find<_CategoryController>();
+
+    return Obx(() {
+      final maxWidth = controller.maxWidth.value;
+
+      return InkWell(
+        child: Padding(
+          padding: EdgeInsets.only(bottom: padding.toAutoScaledHeightWithParent(maxWidth)),
+          child: Material(
+            elevation: 26,
+            borderRadius: BorderRadius.circular(40),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(40),
+              ),
+              padding: EdgeInsets.only(
+                top: 24.toAutoScaledHeightWithParent(maxWidth) - padding.toAutoScaledHeightWithParent(maxWidth),
+                left: 10.toAutoScaledWidthWithParent(maxWidth),
+                right: 10.toAutoScaledWidthWithParent(maxWidth),
+                bottom: 12.toAutoScaledHeightWithParent(maxWidth),
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    size: 24.toAutoScaledWidthWithParent(maxWidth),
                   ),
-                ),
-              ],
+                  4.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
+                  Text(
+                    'Scroll\nDown',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 8.toAutoScaledWidthWithParent(maxWidth),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 }

@@ -36,22 +36,28 @@ class _DishPageState extends State<DishPage> {
 
   @override
   Widget build(BuildContext context) {
-    final _ = Get.put(_DishController(dishEntry: widget.dishEntry));
+    final controller = Get.put(_DishController(dishEntry: widget.dishEntry));
 
     return Scaffold(
       key: ObjectKey(widget.dishEntry),
       backgroundColor: Colors.transparent,
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Expanded(child: SizedBox()),
-          const _CloseButton(),
-          8.toAutoScaledHeightWithContext(context).toVerticalSpace,
-          const _ImageHeader(),
-          const _DishHeader(),
-          const _ButtonRow(),
-        ],
-      ),
+      body: LayoutBuilder(builder: (context, constraints) {
+        final maxWidth = constraints.maxWidth;
+
+        controller.maxWidth.value = maxWidth;
+
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const Expanded(child: SizedBox()),
+            const _CloseButton(),
+            8.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
+            const _ImageHeader(),
+            const _DishHeader(),
+            const _ButtonRow(),
+          ],
+        );
+      }),
     );
   }
 }
