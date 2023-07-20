@@ -12,6 +12,8 @@ The project makes use of the following open source packages
 
 ## Build and run locally
 
+Flutter version - v3.10.5
+
 Clone the repo 
  
 ```
@@ -25,7 +27,7 @@ flutter run
 ```
 ## Demo
 
-https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/07628b3c-fbbc-4e9d-b361-adf84866d6de
+https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/383d52bb-c250-4ba5-a04a-d2fc20f2d0d5
 
 |Menu screen|Menu categories sheet|Dish info sheet|
 |---|---|---|
@@ -36,5 +38,3 @@ https://github.com/thecodepapaya/online_restaurant_menu/assets/42690541/07628b3c
 ## Releases
 
 Checkout the [releases section](https://github.com/thecodepapaya/online_restaurant_menu/releases/latest) for the latest APK from the code.
-
-
