@@ -1,4 +1,4 @@
-# Google Play payment demo
+# Online Restaurant Menu demo
 
 A Flutter project to replicate an online restaurant menu. 
 
