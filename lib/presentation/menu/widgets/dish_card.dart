@@ -99,7 +99,7 @@ class _TextData extends StatelessWidget {
                         ? 2.toAutoScaledWidthWithContext(context)
                         : 8.toAutoScaledWidthWithContext(context))
                     .toHorizontalSpace,
-                ResponsiveDesign.isDesktop ? const SizedBox.shrink() : const Likes(),
+                const Likes(),
               ],
             ),
             (ResponsiveDesign.isDesktop
@@ -246,15 +246,21 @@ class _ImageData extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: DishCounter(
-              parentMaxWidth: ResponsiveDesign.isDesktop ? Get.size.width / 4 : Get.size.width,
-              onCountIncrement: () {
-                controller.addToCart(entry);
-              },
-              onCountDecrement: () {
-                controller.removeFromCart(entry);
-              },
-            ),
+            child: Obx(() {
+              final initialCount = controller.cart.value.entries.where((element) => element == entry).length;
+
+              return DishCounter(
+                key: ValueKey(initialCount),
+                initialCount: initialCount,
+                parentMaxWidth: ResponsiveDesign.isDesktop ? Get.size.width / 4 : Get.size.width,
+                onCountIncrement: () {
+                  controller.addToCart(entry);
+                },
+                onCountDecrement: () {
+                  controller.removeFromCart(entry);
+                },
+              );
+            }),
           ),
         ],
       ),
@@ -272,25 +278,38 @@ class Likes extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: const Color(0xFFE0E4FF),
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.circular(ResponsiveDesign.isDesktop ? 1 : 4),
       ),
       padding: EdgeInsets.symmetric(
-        vertical: 2.toAutoScaledHeightWithContext(context),
-        horizontal: 6.toAutoScaledWidthWithContext(context),
+        vertical: ResponsiveDesign.isDesktop
+            ? 0.5.toAutoScaledHeightWithContext(context)
+            : 2.toAutoScaledHeightWithContext(context),
+        horizontal: ResponsiveDesign.isDesktop
+            ? 1.5.toAutoScaledWidthWithContext(context)
+            : 6.toAutoScaledWidthWithContext(context),
       ),
       child: Row(
         children: [
           SvgPicture.asset(
             "assets/icons/heart_icon.svg",
-            height: 8.toAutoScaledHeightWithContext(context),
-            width: 8.toAutoScaledWidthWithContext(context),
+            height: ResponsiveDesign.isDesktop
+                ? 2.toAutoScaledHeightWithContext(context)
+                : 8.toAutoScaledHeightWithContext(context),
+            width: ResponsiveDesign.isDesktop
+                ? 2.toAutoScaledWidthWithContext(context)
+                : 8.toAutoScaledWidthWithContext(context),
           ),
-          4.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+          (ResponsiveDesign.isDesktop
+                  ? 1.toAutoScaledWidthWithContext(context)
+                  : 4.toAutoScaledWidthWithContext(context))
+              .toHorizontalSpace,
           Text(
             "$likes",
             style: TextStyle(
               color: const Color(0xFF3D54FF),
-              fontSize: 9.toAutoScaledWidthWithContext(context),
+              fontSize: ResponsiveDesign.isDesktop
+                  ? 2.toAutoScaledWidthWithContext(context)
+                  : 9.toAutoScaledWidthWithContext(context),
             ),
           ),
         ],
