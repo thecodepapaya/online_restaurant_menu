@@ -50,35 +50,51 @@ class CategoryPage extends StatelessWidget {
 
           return Scaffold(
             backgroundColor: Colors.transparent,
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                80.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
-                const _CloseButton(),
-                8.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
-                Container(
-                  padding: EdgeInsets.only(
-                    top: 24.toAutoScaledHeightWithParent(maxWidth),
-                    bottom: 16.toAutoScaledWidthWithParent(maxWidth),
-                  ),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
+            body: Center(
+              child: SizedBox(
+                width: ResponsiveDesign.isDesktop ? 100.toAutoScaledHeightWithParent(maxWidth) : double.infinity,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    (ResponsiveDesign.isDesktop
+                            ? 15.toAutoScaledHeightWithParent(maxWidth)
+                            : 80.toAutoScaledHeightWithParent(maxWidth))
+                        .toVerticalSpace,
+                    const _CloseButton(),
+                    (ResponsiveDesign.isDesktop
+                            ? 2.toAutoScaledHeightWithParent(maxWidth)
+                            : 8.toAutoScaledHeightWithParent(maxWidth))
+                        .toVerticalSpace,
+                    Container(
+                      padding: EdgeInsets.only(
+                        top: ResponsiveDesign.isDesktop
+                            ? 4.toAutoScaledWidthWithParent(maxWidth)
+                            : 24.toAutoScaledHeightWithParent(maxWidth),
+                        bottom: ResponsiveDesign.isDesktop
+                            ? 4.toAutoScaledWidthWithParent(maxWidth)
+                            : 16.toAutoScaledWidthWithParent(maxWidth),
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(16),
+                          topRight: Radius.circular(16),
+                        ),
+                      ),
+                      child: const MenuType(),
                     ),
-                  ),
-                  child: const MenuType(),
+                    const Divider(
+                      height: 0.5,
+                      color: Color(0xFFA9AAAE),
+                    ),
+                    const _CategoryHeader(),
+                    const _CategoryList(),
+                    (ResponsiveDesign.isDesktop ? 20.toAutoScaledHeightWithParent(maxWidth) : 0).toVerticalSpace,
+                  ],
                 ),
-                const Divider(
-                  height: 0.5,
-                  color: Color(0xFFA9AAAE),
-                ),
-                const _CategoryHeader(),
-                const _CategoryList(),
-              ],
+              ),
             ),
-            floatingActionButton: const _ScrollDownButton(),
+            floatingActionButton: ResponsiveDesign.isDesktop ? const SizedBox() : const _ScrollDownButton(),
             floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           );
         },

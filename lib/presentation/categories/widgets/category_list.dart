@@ -15,11 +15,18 @@ class _CategoryList extends StatelessWidget {
 
       return Expanded(
         child: Container(
-          color: Colors.white,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: ResponsiveDesign.isDesktop
+                ? const BorderRadius.only(bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16))
+                : null,
+          ),
           child: SingleChildScrollView(
             child: Column(
               children: [
-                8.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
+                ResponsiveDesign.isDesktop
+                    ? 2.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace
+                    : 8.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
                 ...categoriesMap.entries
                     .map(
                       (e) => _CategoryTile(
@@ -29,7 +36,9 @@ class _CategoryList extends StatelessWidget {
                       ),
                     )
                     .toList(),
-                20.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
+                ResponsiveDesign.isDesktop
+                    ? 4.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace
+                    : 20.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
               ],
             ),
           ),

@@ -9,7 +9,7 @@ class PreferenceBar extends StatelessWidget {
       color: Colors.white,
       child: Row(
         children: [
-          16.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+          16.toAutoScaledWidth.toHorizontalSpace,
           const PreferenceButton.vegan(),
           const PreferenceButton.veg(),
           const PreferenceButton.nonveg(),
@@ -58,9 +58,9 @@ class PreferenceButton extends StatelessWidget {
 
       return Padding(
         padding: EdgeInsets.only(
-          top: 12.toAutoScaledHeightWithContext(context),
-          bottom: 12.toAutoScaledHeightWithContext(context),
-          right: 8.toAutoScaledWidthWithContext(context),
+          top: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 12.toAutoScaledHeight,
+          bottom: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 12.toAutoScaledHeight,
+          right: ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 8.toAutoScaledWidth,
         ),
         child: InkWell(
           onTap: () {
@@ -68,8 +68,8 @@ class PreferenceButton extends StatelessWidget {
           },
           child: Container(
             padding: EdgeInsets.symmetric(
-              vertical: 8.toAutoScaledHeightWithContext(context),
-              horizontal: 8.toAutoScaledWidthWithContext(context),
+              vertical: ResponsiveDesign.isDesktop ? 2.toAutoScaledHeight : 8.toAutoScaledHeight,
+              horizontal: ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 8.toAutoScaledWidth,
             ),
             decoration: BoxDecoration(
               color: isSelected ? Colors.blue.withOpacity(0.2) : null,
@@ -82,14 +82,14 @@ class PreferenceButton extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   assetPath,
-                  height: 12.toAutoScaledHeightWithContext(context),
-                  width: 12.toAutoScaledWidthWithContext(context),
+                  height: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 12.toAutoScaledHeight,
+                  width: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 12.toAutoScaledWidth,
                 ),
                 4.toHorizontalSpace,
                 Text(
                   text,
                   style: TextStyle(
-                    fontSize: 10.toAutoScaledHeightWithContext(context),
+                    fontSize: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 10.toAutoScaledHeight,
                   ),
                 ),
               ],

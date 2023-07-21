@@ -17,8 +17,8 @@ class Fab extends StatelessWidget {
         ),
         padding: MaterialStatePropertyAll(
           EdgeInsets.symmetric(
-            horizontal: 20.toAutoScaledWidthWithContext(context),
-            vertical: 12.toAutoScaledHeightWithContext(context),
+            horizontal: ResponsiveDesign.isDesktop ? 5.toAutoScaledWidth : 20.toAutoScaledWidth,
+            vertical: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 12.toAutoScaledHeight,
           ),
         ),
         backgroundColor: const MaterialStatePropertyAll(Color(0xFF121212)),
@@ -31,14 +31,14 @@ class Fab extends StatelessWidget {
         children: [
           SvgPicture.asset(
             "assets/icons/book_icon.svg",
-            height: 16.toAutoScaledHeightWithContext(context),
-            width: 16.toAutoScaledWidthWithContext(context),
+            height: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 16.toAutoScaledHeight,
+            width: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 16.toAutoScaledWidth,
           ),
-          8.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+          (ResponsiveDesign.isDesktop ? 3.toAutoScaledWidth : 8.toAutoScaledWidth).toHorizontalSpace,
           Text(
             'View Categories',
             style: TextStyle(
-              fontSize: 10.toAutoScaledWidthWithContext(context),
+              fontSize: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 10.toAutoScaledWidth,
               fontWeight: FontWeight.w600,
             ),
           ),

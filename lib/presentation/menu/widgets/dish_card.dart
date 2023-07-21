@@ -14,25 +14,25 @@ class DishCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(
-        horizontal: 16.toAutoScaledWidthWithContext(context),
+        horizontal: 16.toAutoScaledWidth,
       ),
       child: Column(
         children: [
           if (!isFirst)
             Divider(
-              height: 2.toAutoScaledHeightWithContext(context),
+              height: 2.toAutoScaledHeight,
               color: Color(0xFFE5E6EF),
             ),
           Container(
             padding: EdgeInsets.symmetric(
-              vertical: 16.toAutoScaledHeightWithContext(context),
+              vertical: 16.toAutoScaledHeight,
             ),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _TextData(entry: entry),
-                16.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+                16.toAutoScaledWidth.toHorizontalSpace,
                 _ImageData(entry: entry),
               ],
             ),
@@ -61,7 +61,7 @@ class _TextData extends StatelessWidget {
         controller._navigateToDishScreen(entry);
       },
       child: SizedBox(
-        width: 175.toAutoScaledWidthWithContext(context),
+        width: 175.toAutoScaledWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -69,48 +69,48 @@ class _TextData extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   "assets/icons/$_meatStatusAsset",
-                  height: 16.toAutoScaledHeightWithContext(context),
-                  width: 16.toAutoScaledWidthWithContext(context),
+                  height: 16.toAutoScaledHeight,
+                  width: 16.toAutoScaledWidth,
                 ),
-                8.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+                8.toAutoScaledWidth.toHorizontalSpace,
                 const Likes(),
               ],
             ),
-            12.toAutoScaledHeightWithContext(context).toVerticalSpace,
+            12.toAutoScaledHeight.toVerticalSpace,
             Text(
               entry.dish.name,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 14.toAutoScaledWidthWithContext(context),
+                fontSize: 14.toAutoScaledWidth,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            12.toAutoScaledHeightWithContext(context).toVerticalSpace,
+            12.toAutoScaledHeight.toVerticalSpace,
             Text(
               entry.dish.description ?? '',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 10.toAutoScaledWidthWithContext(context),
+                fontSize: 10.toAutoScaledWidth,
                 color: const Color(0xFFA9AAAE),
               ),
             ),
-            14.toAutoScaledHeightWithContext(context).toVerticalSpace,
+            14.toAutoScaledHeight.toVerticalSpace,
             Row(
               children: [
                 Text(
                   "Rs ${entry.sellingPrice}",
                   style: TextStyle(
-                    fontSize: 10.toAutoScaledWidthWithContext(context),
+                    fontSize: 10.toAutoScaledWidth,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                8.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+                8.toAutoScaledWidth.toHorizontalSpace,
                 Text(
                   isDiscounted ? "Rs ${entry.displayPrice}" : "",
                   style: TextStyle(
-                    fontSize: 10.toAutoScaledWidthWithContext(context),
+                    fontSize: 10.toAutoScaledWidth,
                     decoration: TextDecoration.lineThrough,
                   ),
                 ),
@@ -155,12 +155,12 @@ class _ImageData extends StatelessWidget {
     final controller = Get.find<_MenuController>();
 
     return SizedBox(
-      height: 135.toAutoScaledHeightWithContext(context),
+      height: 135.toAutoScaledHeight,
       child: Stack(
         children: [
           Positioned(
-            left: 10.toAutoScaledWidthWithContext(context),
-            top: 0.toAutoScaledHeightWithContext(context),
+            left: 10.toAutoScaledWidth,
+            top: 0.toAutoScaledHeight,
             child: InkWell(
               onTap: () {
                 controller._navigateToDishScreen(entry);
@@ -172,13 +172,13 @@ class _ImageData extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return Image.asset(
                       "assets/images/no_image.jpeg",
-                      height: 100.toAutoScaledHeightWithContext(context),
-                      width: 100.toAutoScaledWidthWithContext(context),
+                      height: 100.toAutoScaledHeight,
+                      width: 100.toAutoScaledWidth,
                       fit: BoxFit.cover,
                     );
                   },
-                  height: 100.toAutoScaledHeightWithContext(context),
-                  width: 100.toAutoScaledWidthWithContext(context),
+                  height: 100.toAutoScaledHeight,
+                  width: 100.toAutoScaledWidth,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -207,22 +207,22 @@ class Likes extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       padding: EdgeInsets.symmetric(
-        vertical: 2.toAutoScaledHeightWithContext(context),
-        horizontal: 6.toAutoScaledWidthWithContext(context),
+        vertical: 2.toAutoScaledHeight,
+        horizontal: 6.toAutoScaledWidth,
       ),
       child: Row(
         children: [
           SvgPicture.asset(
             "assets/icons/heart_icon.svg",
-            height: 8.toAutoScaledHeightWithContext(context),
-            width: 8.toAutoScaledWidthWithContext(context),
+            height: 8.toAutoScaledHeight,
+            width: 8.toAutoScaledWidth,
           ),
-          4.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+          4.toAutoScaledWidth.toHorizontalSpace,
           Text(
             "$likes",
             style: TextStyle(
               color: const Color(0xFF3D54FF),
-              fontSize: 9.toAutoScaledWidthWithContext(context),
+              fontSize: 9.toAutoScaledWidth,
             ),
           ),
         ],

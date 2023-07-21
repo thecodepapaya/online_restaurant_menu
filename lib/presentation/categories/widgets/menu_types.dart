@@ -14,7 +14,11 @@ class MenuType extends StatelessWidget {
       final maxWidth = controller.maxWidth.value;
 
       return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.toAutoScaledWidthWithParent(maxWidth)),
+        padding: EdgeInsets.symmetric(
+          horizontal: ResponsiveDesign.isDesktop
+              ? 4.toAutoScaledWidthWithParent(maxWidth)
+              : 16.toAutoScaledWidthWithParent(maxWidth),
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -22,14 +26,20 @@ class MenuType extends StatelessWidget {
               "MENU TYPE ($menuTypeLength)",
               style: TextStyle(
                 color: const Color(0xFFA9AAAE),
-                fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                fontSize: ResponsiveDesign.isDesktop
+                    ? 4.toAutoScaledWidthWithParent(maxWidth)
+                    : 12.toAutoScaledWidthWithParent(maxWidth),
                 fontWeight: FontWeight.w600,
               ),
             ),
             ...menus
                 .map(
                   (m) => Padding(
-                    padding: EdgeInsets.only(top: 16.toAutoScaledHeightWithParent(maxWidth)),
+                    padding: EdgeInsets.only(
+                      top: ResponsiveDesign.isDesktop
+                          ? 4.toAutoScaledHeightWithParent(maxWidth)
+                          : 16.toAutoScaledHeightWithParent(maxWidth),
+                    ),
                     child: _CategoryImage(menu: m),
                   ),
                 )

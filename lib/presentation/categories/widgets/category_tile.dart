@@ -27,12 +27,20 @@ class _CategoryTile extends StatelessWidget {
         },
         child: Container(
           margin: EdgeInsets.symmetric(
-            horizontal: 16.toAutoScaledWidthWithParent(maxWidth),
-            vertical: 4.toAutoScaledHeightWithParent(maxWidth),
+            horizontal: ResponsiveDesign.isDesktop
+                ? 4.toAutoScaledWidthWithParent(maxWidth)
+                : 16.toAutoScaledWidthWithParent(maxWidth),
+            vertical: ResponsiveDesign.isDesktop
+                ? 0.toAutoScaledHeightWithParent(maxWidth)
+                : 4.toAutoScaledHeightWithParent(maxWidth),
           ),
           padding: EdgeInsets.symmetric(
-            horizontal: 8.toAutoScaledWidthWithParent(maxWidth),
-            vertical: 12.toAutoScaledHeightWithParent(maxWidth),
+            horizontal: ResponsiveDesign.isDesktop
+                ? 2.toAutoScaledWidthWithParent(maxWidth)
+                : 8.toAutoScaledWidthWithParent(maxWidth),
+            vertical: ResponsiveDesign.isDesktop
+                ? 3.toAutoScaledHeightWithParent(maxWidth)
+                : 12.toAutoScaledHeightWithParent(maxWidth),
           ),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
@@ -51,16 +59,23 @@ class _CategoryTile extends StatelessWidget {
                   materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 ),
               ),
-              12.toAutoScaledWidthWithParent(maxWidth).toHorizontalSpace,
+              (ResponsiveDesign.isDesktop
+                      ? 3.toAutoScaledWidthWithParent(maxWidth)
+                      : 12.toAutoScaledWidthWithParent(maxWidth))
+                  .toHorizontalSpace,
               SizedBox(
-                width: 220.toAutoScaledWidthWithParent(maxWidth),
+                width: ResponsiveDesign.isDesktop
+                    ? 45.toAutoScaledWidthWithParent(maxWidth)
+                    : 220.toAutoScaledWidthWithParent(maxWidth),
                 child: Text(
                   value,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: TextStyle(
                     color: isSelected ? const Color(0xFF3D54FF) : Colors.black,
-                    fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                    fontSize: ResponsiveDesign.isDesktop
+                        ? 3.toAutoScaledWidthWithParent(maxWidth)
+                        : 12.toAutoScaledWidthWithParent(maxWidth),
                     fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
                   ),
                 ),
@@ -70,7 +85,9 @@ class _CategoryTile extends StatelessWidget {
                 "($valueCount)",
                 style: TextStyle(
                   color: isSelected ? const Color(0xFF3D54FF) : Colors.black,
-                  fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                  fontSize: ResponsiveDesign.isDesktop
+                      ? 3.toAutoScaledWidthWithParent(maxWidth)
+                      : 12.toAutoScaledWidthWithParent(maxWidth),
                   fontWeight: isSelected ? FontWeight.w700 : FontWeight.w400,
                 ),
               ),

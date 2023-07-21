@@ -14,8 +14,12 @@ class _CloseButton extends StatelessWidget {
         onPressed: Get.back,
         icon: SvgPicture.asset(
           "assets/icons/close_icon.svg",
-          height: 24.toAutoScaledHeightWithParent(maxWidth),
-          width: 24.toAutoScaledWidthWithParent(maxWidth),
+          height: ResponsiveDesign.isDesktop
+              ? 6.toAutoScaledHeightWithParent(maxWidth)
+              : 24.toAutoScaledHeightWithParent(maxWidth),
+          width: ResponsiveDesign.isDesktop
+              ? 6.toAutoScaledWidthWithParent(maxWidth)
+              : 24.toAutoScaledWidthWithParent(maxWidth),
         ),
       );
     });

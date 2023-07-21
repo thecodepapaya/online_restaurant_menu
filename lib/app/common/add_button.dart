@@ -14,8 +14,8 @@ class AddButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: 42.toAutoScaledHeightWithContext(context),
-        width: 119.toAutoScaledWidthWithContext(context),
+        height: 42.toAutoScaledHeight,
+        width: 119.toAutoScaledWidth,
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
@@ -27,7 +27,7 @@ class AddButton extends StatelessWidget {
           child: Text(
             'Add',
             style: TextStyle(
-              fontSize: 12.toAutoScaledWidthWithContext(context),
+              fontSize: 12.toAutoScaledWidth,
               color: const Color(0xFF3D54FF),
             ),
           ),

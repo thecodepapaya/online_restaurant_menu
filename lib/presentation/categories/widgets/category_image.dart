@@ -51,19 +51,31 @@ class _CategoryImage extends StatelessWidget {
                       errorBuilder: (context, error, stackTrace) {
                         return Image.asset(
                           "assets/images/no_image.jpeg",
-                          height: 36.toAutoScaledHeightWithParent(maxWidth),
-                          width: 164.toAutoScaledWidthWithParent(maxWidth),
+                          height: ResponsiveDesign.isDesktop
+                              ? 10.toAutoScaledHeightWithParent(maxWidth)
+                              : 36.toAutoScaledHeightWithParent(maxWidth),
+                          width: ResponsiveDesign.isDesktop
+                              ? 20.toAutoScaledWidthWithParent(maxWidth)
+                              : 164.toAutoScaledWidthWithParent(maxWidth),
                           fit: BoxFit.cover,
                         );
                       },
-                      height: 36.toAutoScaledHeightWithParent(maxWidth),
-                      width: 164.toAutoScaledWidthWithParent(maxWidth),
+                      height: ResponsiveDesign.isDesktop
+                          ? 10.toAutoScaledHeightWithParent(maxWidth)
+                          : 36.toAutoScaledHeightWithParent(maxWidth),
+                      width: ResponsiveDesign.isDesktop
+                          ? 20.toAutoScaledWidthWithParent(maxWidth)
+                          : 164.toAutoScaledWidthWithParent(maxWidth),
                       fit: BoxFit.cover,
                     ),
                   ),
                   Positioned(
-                    bottom: 9.toAutoScaledHeightWithParent(maxWidth),
-                    left: 16.toAutoScaledWidthWithParent(maxWidth),
+                    bottom: ResponsiveDesign.isDesktop
+                        ? 2.toAutoScaledHeightWithParent(maxWidth)
+                        : 9.toAutoScaledHeightWithParent(maxWidth),
+                    left: ResponsiveDesign.isDesktop
+                        ? 2.toAutoScaledWidthWithParent(maxWidth)
+                        : 16.toAutoScaledWidthWithParent(maxWidth),
                     child: SizedBox(
                       width: 100,
                       child: Text(
@@ -71,7 +83,9 @@ class _CategoryImage extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
-                          fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+                          fontSize: ResponsiveDesign.isDesktop
+                              ? 3.toAutoScaledWidthWithParent(maxWidth)
+                              : 12.toAutoScaledWidthWithParent(maxWidth),
                           fontWeight: FontWeight.w800,
                           color: Colors.white,
                         ),

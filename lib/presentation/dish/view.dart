@@ -46,16 +46,25 @@ class _DishPageState extends State<DishPage> {
 
         controller.maxWidth.value = maxWidth;
 
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            const Expanded(child: SizedBox()),
-            const _CloseButton(),
-            8.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
-            const _ImageHeader(),
-            const _DishHeader(),
-            const _ButtonRow(),
-          ],
+        return Center(
+          child: SizedBox(
+            width: ResponsiveDesign.isDesktop ? 100.toAutoScaledHeightWithParent(maxWidth) : double.infinity,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                const Expanded(child: SizedBox()),
+                const _CloseButton(),
+                (ResponsiveDesign.isDesktop
+                        ? 2.toAutoScaledHeightWithParent(maxWidth)
+                        : 8.toAutoScaledHeightWithParent(maxWidth))
+                    .toVerticalSpace,
+                const _ImageHeader(),
+                const _DishHeader(),
+                const _ButtonRow(),
+                ResponsiveDesign.isDesktop ? const Expanded(child: SizedBox()) : const SizedBox.shrink(),
+              ],
+            ),
+          ),
         );
       }),
     );

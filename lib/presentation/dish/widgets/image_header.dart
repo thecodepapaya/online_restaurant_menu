@@ -16,8 +16,12 @@ class _ImageHeader extends StatelessWidget {
 
       return Container(
         padding: EdgeInsets.symmetric(
-          vertical: 16.toAutoScaledHeightWithParent(maxWidth),
-          horizontal: 16.toAutoScaledWidthWithParent(maxWidth),
+          vertical: ResponsiveDesign.isDesktop
+              ? 4.toAutoScaledHeightWithParent(maxWidth)
+              : 16.toAutoScaledHeightWithParent(maxWidth),
+          horizontal: ResponsiveDesign.isDesktop
+              ? 4.toAutoScaledWidthWithParent(maxWidth)
+              : 16.toAutoScaledWidthWithParent(maxWidth),
         ),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -37,13 +41,21 @@ class _ImageHeader extends StatelessWidget {
             errorBuilder: (context, error, stackTrace) {
               return Image.asset(
                 "assets/images/no_image.jpeg",
-                height: 180.toAutoScaledHeightWithParent(maxWidth),
-                width: 343.toAutoScaledWidthWithParent(maxWidth),
+                height: ResponsiveDesign.isDesktop
+                    ? 45.toAutoScaledHeightWithParent(maxWidth)
+                    : 180.toAutoScaledHeightWithParent(maxWidth),
+                width: ResponsiveDesign.isDesktop
+                    ? 85.toAutoScaledWidthWithParent(maxWidth)
+                    : 343.toAutoScaledWidthWithParent(maxWidth),
                 fit: BoxFit.cover,
               );
             },
-            height: 180.toAutoScaledHeightWithParent(maxWidth),
-            width: 343.toAutoScaledWidthWithParent(maxWidth),
+            height: ResponsiveDesign.isDesktop
+                ? 45.toAutoScaledHeightWithParent(maxWidth)
+                : 180.toAutoScaledHeightWithParent(maxWidth),
+            width: ResponsiveDesign.isDesktop
+                ? 85.toAutoScaledWidthWithParent(maxWidth)
+                : 343.toAutoScaledWidthWithParent(maxWidth),
             fit: BoxFit.cover,
           ),
         ),

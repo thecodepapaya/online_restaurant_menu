@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
 
 extension Responsive on num {
   double get toAutoScaledWidth {
@@ -40,6 +41,8 @@ extension Responsive on num {
 }
 
 class ResponsiveDesign {
+  ResponsiveDesign._();
+
   static const _designWidth = 375;
   static const _designHeight = 812;
 
@@ -55,4 +58,6 @@ class ResponsiveDesign {
 
   static double widthScaleFactorWithContext(BuildContext context) => MediaQuery.of(context).size.width / _designWidth;
   static double widthScaleFactorWithParent(double width) => width / _designWidth;
+
+  static bool get isDesktop => ResponsiveBreakpoints.of(Get.context!).isDesktop;
 }

@@ -55,7 +55,7 @@ class MenuPage extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      16.toAutoScaledHeightWithContext(context).toVerticalSpace,
+                      (ResponsiveDesign.isDesktop ? 6.toAutoScaledHeight : 16.toAutoScaledHeight).toVerticalSpace,
                       CategoryCard(
                         categoryName: "Recommended",
                         entries: controller.recommendedDishes.value,
@@ -69,14 +69,16 @@ class MenuPage extends StatelessWidget {
                             ),
                           )
                           .toList(),
-                      16.toAutoScaledHeightWithContext(context).toVerticalSpace,
+                      16.toAutoScaledHeight.toVerticalSpace,
                     ],
                   ),
                 ),
               )
             ],
           ),
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation: ResponsiveDesign.isDesktop
+              ? FloatingActionButtonLocation.endFloat
+              : FloatingActionButtonLocation.centerFloat,
           floatingActionButton: const Fab(),
         ),
       );

@@ -23,9 +23,15 @@ class _DishHeader extends StatelessWidget {
           ),
         ),
         padding: EdgeInsets.only(
-          bottom: 16.toAutoScaledHeightWithParent(maxWidth),
-          left: 16.toAutoScaledWidthWithParent(maxWidth),
-          right: 16.toAutoScaledWidthWithParent(maxWidth),
+          bottom: ResponsiveDesign.isDesktop
+              ? 4.toAutoScaledHeightWithParent(maxWidth)
+              : 16.toAutoScaledHeightWithParent(maxWidth),
+          left: ResponsiveDesign.isDesktop
+              ? 4.toAutoScaledWidthWithParent(maxWidth)
+              : 16.toAutoScaledWidthWithParent(maxWidth),
+          right: ResponsiveDesign.isDesktop
+              ? 4.toAutoScaledWidthWithParent(maxWidth)
+              : 16.toAutoScaledWidthWithParent(maxWidth),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,31 +41,49 @@ class _DishHeader extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   "assets/icons/${_meatStatusAsset(dish.meatStatus)}",
-                  height: 16.toAutoScaledHeightWithParent(maxWidth),
-                  width: 16.toAutoScaledWidthWithParent(maxWidth),
+                  height: ResponsiveDesign.isDesktop
+                      ? 4.toAutoScaledHeightWithParent(maxWidth)
+                      : 16.toAutoScaledHeightWithParent(maxWidth),
+                  width: ResponsiveDesign.isDesktop
+                      ? 4.toAutoScaledWidthWithParent(maxWidth)
+                      : 16.toAutoScaledWidthWithParent(maxWidth),
                 ),
-                8.toAutoScaledWidthWithParent(maxWidth).toHorizontalSpace,
+                (ResponsiveDesign.isDesktop
+                        ? 2.toAutoScaledWidthWithParent(maxWidth)
+                        : 8.toAutoScaledWidthWithParent(maxWidth))
+                    .toHorizontalSpace,
                 Text(
                   dish.name,
                   style: TextStyle(
-                    fontSize: 16.toAutoScaledWidthWithParent(maxWidth),
+                    fontSize: ResponsiveDesign.isDesktop
+                        ? 4.toAutoScaledWidthWithParent(maxWidth)
+                        : 16.toAutoScaledWidthWithParent(maxWidth),
                     fontWeight: FontWeight.w600,
                   ),
                 ),
               ],
             ),
-            16.toAutoScaledHeightWithParent(maxWidth).toVerticalSpace,
+            (ResponsiveDesign.isDesktop
+                    ? 4.toAutoScaledHeightWithParent(maxWidth)
+                    : 16.toAutoScaledHeightWithParent(maxWidth))
+                .toVerticalSpace,
             ConstrainedBox(
               constraints: BoxConstraints(
-                maxHeight: 78.toAutoScaledHeightWithParent(maxWidth),
-                minHeight: 78.toAutoScaledHeightWithParent(maxWidth),
+                maxHeight: ResponsiveDesign.isDesktop
+                    ? 15.toAutoScaledHeightWithParent(maxWidth)
+                    : 78.toAutoScaledHeightWithParent(maxWidth),
+                minHeight: ResponsiveDesign.isDesktop
+                    ? 15.toAutoScaledHeightWithParent(maxWidth)
+                    : 78.toAutoScaledHeightWithParent(maxWidth),
               ),
               child: SingleChildScrollView(
                 child: Text(
                   description,
                   style: TextStyle(
-                    fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
-                    color: Color(0xFFA9AAAE),
+                    fontSize: ResponsiveDesign.isDesktop
+                        ? 3.toAutoScaledWidthWithParent(maxWidth)
+                        : 12.toAutoScaledWidthWithParent(maxWidth),
+                    color: const Color(0xFFA9AAAE),
                   ),
                 ),
               ),

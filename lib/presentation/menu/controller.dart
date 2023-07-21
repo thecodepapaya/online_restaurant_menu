@@ -54,11 +54,24 @@ class _MenuController extends GetxController {
     final canProceed = context != null && hasData;
 
     if (canProceed) {
+      // final updatedSelection = await showDialog<List>(
+      //   context: context,
+      //   builder: (context) {
+      //     return CategoryPage(
+      //       data: data.value!,
+      //       selectedCategory: selectedCategory.value!,
+      //       selectedMenu: selectedMenu.value!,
+      //     );
+      //   },
+      // );
+
       final updatedSelection = await showModalBottomSheet<List>(
         context: context,
         backgroundColor: Colors.transparent,
         isScrollControlled: true,
+        isDismissible: true,
         barrierColor: Colors.black.withOpacity(0.8),
+        constraints: const BoxConstraints(maxHeight: double.infinity),
         builder: (context) {
           return CategoryPage(
             data: data.value!,
@@ -85,6 +98,7 @@ class _MenuController extends GetxController {
       barrierColor: Colors.black.withOpacity(0.8),
       isDismissible: true,
       isScrollControlled: true,
+      constraints: const BoxConstraints(maxHeight: double.infinity),
       builder: (context) {
         return DishPage(dishEntry: dishEntry);
       },

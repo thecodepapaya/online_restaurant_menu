@@ -23,17 +23,27 @@ class _CategoryHeader extends StatelessWidget {
             ),
           ),
           padding: EdgeInsets.only(
-            top: 24.toAutoScaledHeightWithParent(maxWidth),
-            bottom: 8.toAutoScaledHeightWithParent(maxWidth),
-            left: 16.toAutoScaledWidthWithParent(maxWidth),
-            right: 16.toAutoScaledWidthWithParent(maxWidth),
+            top: ResponsiveDesign.isDesktop
+                ? 6.toAutoScaledHeightWithParent(maxWidth)
+                : 24.toAutoScaledHeightWithParent(maxWidth),
+            bottom: ResponsiveDesign.isDesktop
+                ? 2.toAutoScaledHeightWithParent(maxWidth)
+                : 8.toAutoScaledHeightWithParent(maxWidth),
+            left: ResponsiveDesign.isDesktop
+                ? 4.toAutoScaledWidthWithParent(maxWidth)
+                : 16.toAutoScaledWidthWithParent(maxWidth),
+            right: ResponsiveDesign.isDesktop
+                ? 4.toAutoScaledWidthWithParent(maxWidth)
+                : 16.toAutoScaledWidthWithParent(maxWidth),
           ),
           child: Text(
             "CATEGORIES ($categoriesCount)",
             style: TextStyle(
-              fontSize: 12.toAutoScaledWidthWithParent(maxWidth),
+              fontSize: ResponsiveDesign.isDesktop
+                  ? 4.toAutoScaledWidthWithParent(maxWidth)
+                  : 12.toAutoScaledWidthWithParent(maxWidth),
               fontWeight: FontWeight.w600,
-              color: Color(0xFFA9AAAE),
+              color: const Color(0xFFA9AAAE),
             ),
           ),
         );
