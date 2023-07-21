@@ -11,20 +11,21 @@ import 'package:explorex/presentation/dish/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:show_up_animation/show_up_animation.dart';
 
 part 'controller.dart';
+part 'web/category_card.dart';
+part 'web/dish_card.dart';
+part 'web/layout.dart';
 part 'widgets/app_bar.dart';
-part 'widgets/category_list_tile.dart';
 part 'widgets/category_card.dart';
+part 'widgets/category_list_tile.dart';
 part 'widgets/dish_card.dart';
 part 'widgets/error.dart';
 part 'widgets/fab.dart';
 part 'widgets/loader.dart';
 part 'widgets/preference_bar.dart';
 part 'widgets/recommended_bar.dart';
-part 'web/layout.dart';
-part 'web/dish_card.dart';
-part 'web/category_card.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -78,7 +79,7 @@ class MenuPage extends StatelessWidget {
                                   ),
                                 )
                                 .toList(),
-                            16.toAutoScaledHeightWithContext(context).toVerticalSpace,
+                            150.toAutoScaledHeightWithContext(context).toVerticalSpace,
                           ],
                         ),
                       ),

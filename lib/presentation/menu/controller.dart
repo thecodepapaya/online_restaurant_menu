@@ -11,6 +11,7 @@ class _MenuController extends GetxController {
   Rx<MeatStatus?> selectedMeatStatus = Rx<MeatStatus?>(null);
   Rx<List<Entry>> recommendedDishes = Rx<List<Entry>>([]);
   Rx<Map<String, List<Entry>>> categorySortedData = Rx<Map<String, List<Entry>>>({});
+  Rx<Cart> cart = Rx<Cart>(Cart(entries: []));
 
   // State variables END
 
@@ -159,4 +160,21 @@ class _MenuController extends GetxController {
 
     categorySortedData.value = data;
   }
+
+  void addToCart(Entry entry) {
+    cart.value = Cart(entries: [...cart.value.entries, entry]);
+  }
+
+  void removeFromCart(Entry entry) {
+    final newEntries = List<Entry>.from(cart.value.entries);
+    newEntries.remove(entry);
+
+    cart.value = Cart(entries: newEntries);
+  }
+}
+
+class Cart {
+  List<Entry> entries;
+
+  Cart({required this.entries});
 }

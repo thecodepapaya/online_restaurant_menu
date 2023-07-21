@@ -246,7 +246,15 @@ class _ImageData extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: DishCounter(parentMaxWidth: ResponsiveDesign.isDesktop ? Get.size.width / 4 : Get.size.width),
+            child: DishCounter(
+              parentMaxWidth: ResponsiveDesign.isDesktop ? Get.size.width / 4 : Get.size.width,
+              onCountIncrement: () {
+                controller.addToCart(entry);
+              },
+              onCountDecrement: () {
+                controller.removeFromCart(entry);
+              },
+            ),
           ),
         ],
       ),

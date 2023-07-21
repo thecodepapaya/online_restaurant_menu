@@ -5,11 +5,15 @@ import 'package:flutter/material.dart';
 class DishCounter extends StatefulWidget {
   final int initialCount;
   final double parentMaxWidth;
+  final VoidCallback? onCountIncrement;
+  final VoidCallback? onCountDecrement;
 
   const DishCounter({
     super.key,
     this.initialCount = 0,
     required this.parentMaxWidth,
+    this.onCountIncrement,
+    this.onCountDecrement,
   });
 
   @override
@@ -29,12 +33,16 @@ class _DishCounterState extends State<DishCounter> {
     setState(() {
       count--;
     });
+
+    widget.onCountDecrement?.call();
   }
 
   void _onIncrease() {
     setState(() {
       count++;
     });
+
+    widget.onCountIncrement?.call();
   }
 
   @override
