@@ -27,18 +27,32 @@ class DishCard extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               vertical: 16.toAutoScaledHeight,
             ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _TextData(entry: entry),
-                16.toAutoScaledWidth.toHorizontalSpace,
-                _ImageData(entry: entry),
-              ],
-            ),
+            child: _CardData(entry: entry),
           ),
         ],
       ),
+    );
+  }
+}
+
+class _CardData extends StatelessWidget {
+  final Entry entry;
+
+  const _CardData({
+    super.key,
+    required this.entry,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        _TextData(entry: entry),
+        (ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 16.toAutoScaledWidth).toHorizontalSpace,
+        _ImageData(entry: entry),
+      ],
     );
   }
 }
@@ -61,7 +75,7 @@ class _TextData extends StatelessWidget {
         controller._navigateToDishScreen(entry);
       },
       child: SizedBox(
-        width: 175.toAutoScaledWidth,
+        width: ResponsiveDesign.isDesktop ? 38.toAutoScaledWidth : 175.toAutoScaledWidth,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -69,48 +83,48 @@ class _TextData extends StatelessWidget {
               children: [
                 SvgPicture.asset(
                   "assets/icons/$_meatStatusAsset",
-                  height: 16.toAutoScaledHeight,
-                  width: 16.toAutoScaledWidth,
+                  height: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 16.toAutoScaledHeight,
+                  width: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 16.toAutoScaledWidth,
                 ),
-                8.toAutoScaledWidth.toHorizontalSpace,
-                const Likes(),
+                (ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 8.toAutoScaledWidth).toHorizontalSpace,
+                ResponsiveDesign.isDesktop ? const SizedBox.shrink() : const Likes(),
               ],
             ),
-            12.toAutoScaledHeight.toVerticalSpace,
+            (ResponsiveDesign.isDesktop ? 3.toAutoScaledHeight : 12.toAutoScaledHeight).toVerticalSpace,
             Text(
               entry.dish.name,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 14.toAutoScaledWidth,
+                fontSize: ResponsiveDesign.isDesktop ? 3.toAutoScaledWidth : 14.toAutoScaledWidth,
                 fontWeight: FontWeight.w600,
               ),
             ),
-            12.toAutoScaledHeight.toVerticalSpace,
+            (ResponsiveDesign.isDesktop ? 3.toAutoScaledHeight : 12.toAutoScaledHeight).toVerticalSpace,
             Text(
               entry.dish.description ?? '',
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
-                fontSize: 10.toAutoScaledWidth,
+                fontSize: (ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 10.toAutoScaledWidth),
                 color: const Color(0xFFA9AAAE),
               ),
             ),
-            14.toAutoScaledHeight.toVerticalSpace,
+            (ResponsiveDesign.isDesktop ? 3.toAutoScaledHeight : 14.toAutoScaledHeight).toVerticalSpace,
             Row(
               children: [
                 Text(
                   "Rs ${entry.sellingPrice}",
                   style: TextStyle(
-                    fontSize: 10.toAutoScaledWidth,
+                    fontSize: ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 10.toAutoScaledWidth,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
-                8.toAutoScaledWidth.toHorizontalSpace,
+                (ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 8.toAutoScaledWidth).toHorizontalSpace,
                 Text(
                   isDiscounted ? "Rs ${entry.displayPrice}" : "",
                   style: TextStyle(
-                    fontSize: 10.toAutoScaledWidth,
+                    fontSize: (ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 10.toAutoScaledWidth),
                     decoration: TextDecoration.lineThrough,
                   ),
                 ),
@@ -155,12 +169,12 @@ class _ImageData extends StatelessWidget {
     final controller = Get.find<_MenuController>();
 
     return SizedBox(
-      height: 135.toAutoScaledHeight,
+      height: ResponsiveDesign.isDesktop ? 34.toAutoScaledHeight : 135.toAutoScaledHeight,
       child: Stack(
         children: [
           Positioned(
-            left: 10.toAutoScaledWidth,
-            top: 0.toAutoScaledHeight,
+            left: ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 10.toAutoScaledWidth,
+            top: ResponsiveDesign.isDesktop ? 0.toAutoScaledHeight : 0.toAutoScaledHeight,
             child: InkWell(
               onTap: () {
                 controller._navigateToDishScreen(entry);
@@ -172,13 +186,13 @@ class _ImageData extends StatelessWidget {
                   errorBuilder: (context, error, stackTrace) {
                     return Image.asset(
                       "assets/images/no_image.jpeg",
-                      height: 100.toAutoScaledHeight,
-                      width: 100.toAutoScaledWidth,
+                      height: ResponsiveDesign.isDesktop ? 25.toAutoScaledHeight : 100.toAutoScaledHeight,
+                      width: ResponsiveDesign.isDesktop ? 25.toAutoScaledWidth : 100.toAutoScaledWidth,
                       fit: BoxFit.cover,
                     );
                   },
-                  height: 100.toAutoScaledHeight,
-                  width: 100.toAutoScaledWidth,
+                  height: ResponsiveDesign.isDesktop ? 25.toAutoScaledHeight : 100.toAutoScaledHeight,
+                  width: ResponsiveDesign.isDesktop ? 25.toAutoScaledWidth : 100.toAutoScaledWidth,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -186,7 +200,7 @@ class _ImageData extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: DishCounter(parentMaxWidth: Get.size.width),
+            child: DishCounter(parentMaxWidth: ResponsiveDesign.isDesktop ? Get.size.width / 4 : Get.size.width),
           ),
         ],
       ),

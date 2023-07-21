@@ -54,17 +54,6 @@ class _MenuController extends GetxController {
     final canProceed = context != null && hasData;
 
     if (canProceed) {
-      // final updatedSelection = await showDialog<List>(
-      //   context: context,
-      //   builder: (context) {
-      //     return CategoryPage(
-      //       data: data.value!,
-      //       selectedCategory: selectedCategory.value!,
-      //       selectedMenu: selectedMenu.value!,
-      //     );
-      //   },
-      // );
-
       final updatedSelection = await showModalBottomSheet<List>(
         context: context,
         backgroundColor: Colors.transparent,
@@ -111,6 +100,11 @@ class _MenuController extends GetxController {
   }) {
     log('CHANGED selectedMenu: ${newMenu.name} selectedCategory: $newCategory', name: '_updateSelectedMenu');
     selectedMenu.value = newMenu;
+
+    _updateSelectedCategory(newCategory: newCategory);
+  }
+
+  void _updateSelectedCategory({required String newCategory}) {
     selectedCategory.value = newCategory;
 
     _populateCategoryWiseMenuEntries();

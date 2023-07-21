@@ -14,6 +14,7 @@ import 'package:get/get.dart';
 
 part 'controller.dart';
 part 'widgets/app_bar.dart';
+part 'widgets/category_list_tile.dart';
 part 'widgets/category_card.dart';
 part 'widgets/dish_card.dart';
 part 'widgets/error.dart';
@@ -21,6 +22,8 @@ part 'widgets/fab.dart';
 part 'widgets/loader.dart';
 part 'widgets/preference_bar.dart';
 part 'widgets/recommended_bar.dart';
+part 'web/layout.dart';
+part 'web/category_card.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -52,27 +55,29 @@ class MenuPage extends StatelessWidget {
               const PreferenceBar(),
               const RecommendedBar(),
               Expanded(
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      (ResponsiveDesign.isDesktop ? 6.toAutoScaledHeight : 16.toAutoScaledHeight).toVerticalSpace,
-                      CategoryCard(
-                        categoryName: "Recommended",
-                        entries: controller.recommendedDishes.value,
-                      ),
-                      ...categorySortedData.entries
-                          .map(
-                            (e) => CategoryCard(
-                              key: GlobalObjectKey(e.key),
-                              categoryName: e.key,
-                              entries: e.value,
+                child: ResponsiveDesign.isDesktop
+                    ? _WebLayout()
+                    : SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            (ResponsiveDesign.isDesktop ? 6.toAutoScaledHeight : 16.toAutoScaledHeight).toVerticalSpace,
+                            CategoryCard(
+                              categoryName: "Recommended",
+                              entries: controller.recommendedDishes.value,
                             ),
-                          )
-                          .toList(),
-                      16.toAutoScaledHeight.toVerticalSpace,
-                    ],
-                  ),
-                ),
+                            ...categorySortedData.entries
+                                .map(
+                                  (e) => CategoryCard(
+                                    key: GlobalObjectKey(e.key),
+                                    categoryName: e.key,
+                                    entries: e.value,
+                                  ),
+                                )
+                                .toList(),
+                            16.toAutoScaledHeight.toVerticalSpace,
+                          ],
+                        ),
+                      ),
               )
             ],
           ),

@@ -52,33 +52,9 @@ class _CategoryCardState extends State<CategoryCard> {
           collapsedShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Expanded(
-                flex: 3,
-                child: Text(
-                  widget.categoryName,
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontSize: 12.toAutoScaledWidth,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Text(
-                  '${widget.entries.length} items',
-                  textAlign: TextAlign.end,
-                  style: TextStyle(
-                    fontSize: 12.toAutoScaledWidth,
-                    color: const Color(0xFFA9AAAE),
-                  ),
-                ),
-              ),
-            ],
+          title: _CategoryListTile(
+            categoryName: widget.categoryName,
+            categoryCount: widget.entries.length,
           ),
           children: <Widget>[
             const Divider(
