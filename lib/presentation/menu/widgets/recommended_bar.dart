@@ -34,7 +34,7 @@ class RecommendedBar extends StatelessWidget {
             final recommendedCount = controller.recommendedDishes.value.length;
 
             return Text(
-              '($recommendedCount items)',
+              '($recommendedCount ${"item".toPlural(recommendedCount)})',
               style: TextStyle(
                 fontSize: ResponsiveDesign.isDesktop
                     ? 4.toAutoScaledWidthWithContext(context)

@@ -32,7 +32,7 @@ class _CategoryListTile extends StatelessWidget {
         Expanded(
           flex: 1,
           child: Text(
-            '$categoryCount items',
+            '$categoryCount ${"item".toPlural(categoryCount)}',
             textAlign: TextAlign.end,
             style: TextStyle(
               fontSize: ResponsiveDesign.isDesktop

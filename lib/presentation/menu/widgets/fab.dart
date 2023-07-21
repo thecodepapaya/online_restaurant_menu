@@ -134,7 +134,7 @@ class _OrderButton extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "${cartEntries.length} items",
+                      "${cartEntries.length} ${"item".toPlural(cartEntries.length)}",
                       style: TextStyle(
                         fontSize: ResponsiveDesign.isDesktop ? 2.toAutoScaledWidth : 9.toAutoScaledWidth,
                         color: Colors.white,

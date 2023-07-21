@@ -9,3 +9,9 @@ extension Spacing on num {
     return SizedBox(height: toDouble());
   }
 }
+
+extension Plural on String {
+  String toPlural(int count, [String suffix = 's']) {
+    return count == 1 ? this : this + suffix;
+  }
+}
