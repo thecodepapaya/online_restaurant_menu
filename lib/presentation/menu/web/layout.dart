@@ -19,6 +19,10 @@ class _WebLayoutState extends State<_WebLayout> {
 
       final selectedCategory = controller.selectedCategory.value;
 
+      final recommendedDished = controller.recommendedDishes.value;
+
+      final isRecommendedSelected = controller.selectedCategory.value == "Recommended";
+
       return Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -33,35 +37,15 @@ class _WebLayoutState extends State<_WebLayout> {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  children: data.entries.map((e) {
-                    final isSelected = e.key == controller.selectedCategory.value;
-
-                    return InkWell(
-                      onTap: () {
-                        controller._updateSelectedCategory(newCategory: e.key);
-                      },
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 12.toAutoScaledWidthWithContext(context),
-                          vertical: 2.toAutoScaledHeightWithContext(context),
-                        ),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: isSelected ? Colors.blue.withOpacity(0.2) : null,
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: 2.toAutoScaledHeightWithContext(context),
-                            horizontal: 4.toAutoScaledWidthWithContext(context),
-                          ),
-                          child: _CategoryListTile(
-                            categoryName: e.key,
-                            categoryCount: e.value.length,
-                          ),
-                        ),
-                      ),
-                    );
-                  }).toList(),
+                  children: [
+                    _WebCategoryCard(
+                      category: 'Recommended',
+                      entries: recommendedDished,
+                    ),
+                    ...data.entries.map((e) {
+                      return _WebCategoryCard(category: e.key, entries: e.value);
+                    })
+                  ].toList(),
                 ),
               ),
             ),
@@ -71,23 +55,11 @@ class _WebLayoutState extends State<_WebLayout> {
             child: GridView.count(
               childAspectRatio: 2,
               crossAxisCount: 3,
-              children: data[selectedCategory] == null
-                  ? []
-                  : data[selectedCategory]!.map((e) {
-                      final selectedMeatPref = controller.selectedMeatStatus.value;
-                      final isMeatPrefEmpty = selectedMeatPref == null;
-
-                      if (isMeatPrefEmpty) {
-                        return _WebCategoryCard(entry: e);
-                      } else {
-                        final isMeatPrefMatch = e.dish.meatStatus == selectedMeatPref;
-                        if (isMeatPrefMatch) {
-                          return _WebCategoryCard(entry: e);
-                        } else {
-                          return SizedBox.shrink();
-                        }
-                      }
-                    }).toList(),
+              children: isRecommendedSelected
+                  ? recommendedDished.map((e) => _WebDishCard(entry: e)).toList()
+                  : data[selectedCategory] == null
+                      ? []
+                      : data[selectedCategory]!.map((e) => _WebDishCard(entry: e)).toList(),
             ),
           ),
         ],

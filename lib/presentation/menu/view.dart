@@ -23,6 +23,7 @@ part 'widgets/loader.dart';
 part 'widgets/preference_bar.dart';
 part 'widgets/recommended_bar.dart';
 part 'web/layout.dart';
+part 'web/dish_card.dart';
 part 'web/category_card.dart';
 
 class MenuPage extends StatelessWidget {
