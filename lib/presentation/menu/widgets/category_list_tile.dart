@@ -22,7 +22,9 @@ class _CategoryListTile extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 12.toAutoScaledWidth,
+              fontSize: ResponsiveDesign.isDesktop
+                  ? 4.toAutoScaledWidthWithContext(context)
+                  : 12.toAutoScaledWidthWithContext(context),
               fontWeight: FontWeight.w600,
             ),
           ),
@@ -33,7 +35,9 @@ class _CategoryListTile extends StatelessWidget {
             '$categoryCount items',
             textAlign: TextAlign.end,
             style: TextStyle(
-              fontSize: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 12.toAutoScaledWidth,
+              fontSize: ResponsiveDesign.isDesktop
+                  ? 4.toAutoScaledWidthWithContext(context)
+                  : 12.toAutoScaledWidthWithContext(context),
               color: const Color(0xFFA9AAAE),
             ),
           ),

@@ -9,8 +9,10 @@ class RecommendedBar extends StatelessWidget {
 
     return Container(
       padding: EdgeInsets.symmetric(
-        vertical: ResponsiveDesign.isDesktop ? 2.toAutoScaledHeight : 8.toAutoScaledHeight,
-        horizontal: 16.toAutoScaledWidth,
+        vertical: ResponsiveDesign.isDesktop
+            ? 2.toAutoScaledHeightWithContext(context)
+            : 8.toAutoScaledHeightWithContext(context),
+        horizontal: 16.toAutoScaledWidthWithContext(context),
       ),
       width: double.infinity,
       decoration: BoxDecoration(
@@ -22,7 +24,9 @@ class RecommendedBar extends StatelessWidget {
           Text(
             'Recommended in Food Menu',
             style: TextStyle(
-              fontSize: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 10.toAutoScaledWidth,
+              fontSize: ResponsiveDesign.isDesktop
+                  ? 4.toAutoScaledWidthWithContext(context)
+                  : 10.toAutoScaledWidthWithContext(context),
               color: const Color(0xFF121212),
             ),
           ),
@@ -32,7 +36,9 @@ class RecommendedBar extends StatelessWidget {
             return Text(
               '($recommendedCount items)',
               style: TextStyle(
-                fontSize: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 10.toAutoScaledWidth,
+                fontSize: ResponsiveDesign.isDesktop
+                    ? 4.toAutoScaledWidthWithContext(context)
+                    : 10.toAutoScaledWidthWithContext(context),
                 color: const Color(0xFF5a5a5a),
               ),
             );

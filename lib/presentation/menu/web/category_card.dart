@@ -12,12 +12,12 @@ class _WebCategoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-        horizontal: 4.toAutoScaledWidth,
-        vertical: 2.toAutoScaledHeight,
+        horizontal: 4.toAutoScaledWidthWithContext(context),
+        vertical: 2.toAutoScaledHeightWithContext(context),
       ),
       padding: EdgeInsets.symmetric(
-        horizontal: 4.toAutoScaledWidth,
-        vertical: 2.toAutoScaledHeight,
+        horizontal: 4.toAutoScaledWidthWithContext(context),
+        vertical: 2.toAutoScaledHeightWithContext(context),
       ),
       decoration: BoxDecoration(
         color: Colors.white,

@@ -26,17 +26,17 @@ class _CategoryCardState extends State<CategoryCard> {
 
       return Padding(
         padding: EdgeInsets.only(
-          left: 16.toAutoScaledWidth,
-          right: 16.toAutoScaledWidth,
-          bottom: 16.toAutoScaledWidth,
+          left: 16.toAutoScaledWidthWithContext(context),
+          right: 16.toAutoScaledWidthWithContext(context),
+          bottom: 16.toAutoScaledWidthWithContext(context),
         ),
         child: ExpansionTile(
           key: ValueKey(isInitiallyExpanded),
           initiallyExpanded: isInitiallyExpanded,
           childrenPadding: EdgeInsets.zero,
           tilePadding: EdgeInsets.symmetric(
-            vertical: 8.toAutoScaledHeight,
-            horizontal: 16.toAutoScaledWidth,
+            vertical: 8.toAutoScaledHeightWithContext(context),
+            horizontal: 16.toAutoScaledWidthWithContext(context),
           ),
           trailing: trailingWidget(isExpanded),
           onExpansionChanged: (bool expanded) {
@@ -90,8 +90,8 @@ class _CategoryCardState extends State<CategoryCard> {
 
   Widget trailingWidget(bool isExpanded) {
     return Container(
-      height: 20.toAutoScaledHeight,
-      width: 20.toAutoScaledWidth,
+      height: 20.toAutoScaledHeightWithContext(context),
+      width: 20.toAutoScaledWidthWithContext(context),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(4),
         color: const Color(0xFFE5E6EF),
@@ -99,7 +99,7 @@ class _CategoryCardState extends State<CategoryCard> {
       child: Center(
         child: Icon(
           isExpanded ? Icons.keyboard_arrow_down_rounded : Icons.keyboard_arrow_up_rounded,
-          size: 20.toAutoScaledWidth,
+          size: 20.toAutoScaledWidthWithContext(context),
         ),
       ),
     );

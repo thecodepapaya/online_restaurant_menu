@@ -42,8 +42,8 @@ class _WebLayoutState extends State<_WebLayout> {
                       },
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                          horizontal: 12.toAutoScaledWidth,
-                          vertical: 2.toAutoScaledHeight,
+                          horizontal: 12.toAutoScaledWidthWithContext(context),
+                          vertical: 2.toAutoScaledHeightWithContext(context),
                         ),
                         child: Container(
                           decoration: BoxDecoration(
@@ -51,8 +51,8 @@ class _WebLayoutState extends State<_WebLayout> {
                             borderRadius: BorderRadius.circular(8),
                           ),
                           padding: EdgeInsets.symmetric(
-                            vertical: 2.toAutoScaledHeight,
-                            horizontal: 4.toAutoScaledWidth,
+                            vertical: 2.toAutoScaledHeightWithContext(context),
+                            horizontal: 4.toAutoScaledWidthWithContext(context),
                           ),
                           child: _CategoryListTile(
                             categoryName: e.key,

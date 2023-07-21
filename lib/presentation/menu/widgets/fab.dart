@@ -17,8 +17,12 @@ class Fab extends StatelessWidget {
         ),
         padding: MaterialStatePropertyAll(
           EdgeInsets.symmetric(
-            horizontal: ResponsiveDesign.isDesktop ? 5.toAutoScaledWidth : 20.toAutoScaledWidth,
-            vertical: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 12.toAutoScaledHeight,
+            horizontal: ResponsiveDesign.isDesktop
+                ? 5.toAutoScaledWidthWithContext(context)
+                : 20.toAutoScaledWidthWithContext(context),
+            vertical: ResponsiveDesign.isDesktop
+                ? 4.toAutoScaledHeightWithContext(context)
+                : 12.toAutoScaledHeightWithContext(context),
           ),
         ),
         backgroundColor: const MaterialStatePropertyAll(Color(0xFF121212)),
@@ -31,14 +35,23 @@ class Fab extends StatelessWidget {
         children: [
           SvgPicture.asset(
             "assets/icons/book_icon.svg",
-            height: ResponsiveDesign.isDesktop ? 4.toAutoScaledHeight : 16.toAutoScaledHeight,
-            width: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 16.toAutoScaledWidth,
+            height: ResponsiveDesign.isDesktop
+                ? 4.toAutoScaledHeightWithContext(context)
+                : 16.toAutoScaledHeightWithContext(context),
+            width: ResponsiveDesign.isDesktop
+                ? 4.toAutoScaledWidthWithContext(context)
+                : 16.toAutoScaledWidthWithContext(context),
           ),
-          (ResponsiveDesign.isDesktop ? 3.toAutoScaledWidth : 8.toAutoScaledWidth).toHorizontalSpace,
+          (ResponsiveDesign.isDesktop
+                  ? 3.toAutoScaledWidthWithContext(context)
+                  : 8.toAutoScaledWidthWithContext(context))
+              .toHorizontalSpace,
           Text(
             'View Categories',
             style: TextStyle(
-              fontSize: ResponsiveDesign.isDesktop ? 4.toAutoScaledWidth : 10.toAutoScaledWidth,
+              fontSize: ResponsiveDesign.isDesktop
+                  ? 4.toAutoScaledWidthWithContext(context)
+                  : 10.toAutoScaledWidthWithContext(context),
               fontWeight: FontWeight.w600,
             ),
           ),

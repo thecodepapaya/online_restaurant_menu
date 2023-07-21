@@ -8,12 +8,16 @@ class EAppBar extends StatelessWidget {
     return Container(
       color: Colors.white,
       width: double.infinity,
-      padding:
-          EdgeInsets.symmetric(vertical: ResponsiveDesign.isDesktop ? 2.toAutoScaledHeight : 12.toAutoScaledHeight),
+      padding: EdgeInsets.symmetric(
+          vertical: ResponsiveDesign.isDesktop
+              ? 2.toAutoScaledHeightWithContext(context)
+              : 12.toAutoScaledHeightWithContext(context)),
       child: Image.asset(
         "assets/icons/logo.png",
-        width: 86.toAutoScaledWidth,
-        height: ResponsiveDesign.isDesktop ? 8.toAutoScaledHeight : 24.toAutoScaledHeight,
+        width: 86.toAutoScaledWidthWithContext(context),
+        height: ResponsiveDesign.isDesktop
+            ? 8.toAutoScaledHeightWithContext(context)
+            : 24.toAutoScaledHeightWithContext(context),
       ),
     );
   }

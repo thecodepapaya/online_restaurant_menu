@@ -14,8 +14,12 @@ class AddButton extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
-        height: ResponsiveDesign.isDesktop ? 10.5.toAutoScaledHeight : 42.toAutoScaledHeight,
-        width: ResponsiveDesign.isDesktop ? 30.toAutoScaledWidth : 119.toAutoScaledWidth,
+        height: ResponsiveDesign.isDesktop
+            ? 10.5.toAutoScaledHeightWithContext(context)
+            : 42.toAutoScaledHeightWithContext(context),
+        width: ResponsiveDesign.isDesktop
+            ? 30.toAutoScaledWidthWithContext(context)
+            : 119.toAutoScaledWidthWithContext(context),
         decoration: BoxDecoration(
           color: Colors.white,
           border: Border.all(
@@ -27,7 +31,9 @@ class AddButton extends StatelessWidget {
           child: Text(
             'Add',
             style: TextStyle(
-              fontSize: ResponsiveDesign.isDesktop ? 3.toAutoScaledWidth : 12.toAutoScaledWidth,
+              fontSize: ResponsiveDesign.isDesktop
+                  ? 3.toAutoScaledWidthWithContext(context)
+                  : 12.toAutoScaledWidthWithContext(context),
               color: const Color(0xFF3D54FF),
             ),
           ),
