@@ -5,7 +5,7 @@ class RecommendedBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<_MenuController>();
+    final controller = Get.find<OrderMenuController>();
 
     return Container(
       padding: EdgeInsets.symmetric(

@@ -5,7 +5,7 @@ class Fab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _MenuController controller = Get.find<_MenuController>();
+    final OrderMenuController controller = Get.find<OrderMenuController>();
 
     return Obx(() {
       final showCartBanner = controller.cart.value.entries.isNotEmpty && !ResponsiveDesign.isDesktop;
@@ -27,7 +27,7 @@ class _CategoryFabButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _MenuController controller = Get.find<_MenuController>();
+    final OrderMenuController controller = Get.find<OrderMenuController>();
 
     return ElevatedButton(
       style: ButtonStyle(
@@ -88,7 +88,7 @@ class _OrderButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _MenuController controller = Get.find<_MenuController>();
+    final OrderMenuController controller = Get.find<OrderMenuController>();
 
     return Obx(() {
       final cartEntries = controller.cart.value.entries;

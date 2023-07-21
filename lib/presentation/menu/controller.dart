@@ -1,7 +1,7 @@
 part of 'view.dart';
 
-class _MenuController extends GetxController {
-  _MenuController();
+class OrderMenuController extends GetxController {
+  OrderMenuController();
 
   // State variables BEGIN
 

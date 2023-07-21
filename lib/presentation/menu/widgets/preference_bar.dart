@@ -5,7 +5,7 @@ class PreferenceBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<_MenuController>();
+    final controller = Get.find<OrderMenuController>();
 
     return Obx(() {
       final showCartBanner = controller.cart.value.entries.isNotEmpty && ResponsiveDesign.isDesktop;
@@ -57,7 +57,7 @@ class PreferenceButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<_MenuController>();
+    final controller = Get.find<OrderMenuController>();
 
     return Obx(() {
       final selectedMeatPref = controller.selectedMeatStatus.value;

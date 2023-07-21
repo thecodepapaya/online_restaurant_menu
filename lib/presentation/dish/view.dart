@@ -4,6 +4,7 @@ import 'package:explorex/app/common/counter.dart';
 import 'package:explorex/app/helpers.dart';
 import 'package:explorex/app/responsive.dart';
 import 'package:explorex/domains/explorex_data.dart';
+import 'package:explorex/presentation/menu/view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';

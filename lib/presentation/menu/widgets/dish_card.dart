@@ -71,7 +71,7 @@ class _TextData extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final isDiscounted = entry.displayPrice != entry.sellingPrice;
-    final controller = Get.find<_MenuController>();
+    final controller = Get.find<OrderMenuController>();
 
     return InkWell(
       onTap: () {
@@ -198,7 +198,7 @@ class _ImageData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<_MenuController>();
+    final controller = Get.find<OrderMenuController>();
 
     return SizedBox(
       height: ResponsiveDesign.isDesktop

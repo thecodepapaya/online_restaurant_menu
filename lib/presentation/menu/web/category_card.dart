@@ -12,7 +12,7 @@ class _WebCategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<_MenuController>();
+    final controller = Get.find<OrderMenuController>();
 
     return Obx(() {
       final isSelected = category == controller.selectedCategory.value;

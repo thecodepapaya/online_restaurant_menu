@@ -1,7 +1,14 @@
 part of '../view.dart';
 
-class _ButtonRow extends StatelessWidget {
+class _ButtonRow extends StatefulWidget {
   const _ButtonRow({super.key});
+
+  @override
+  State<_ButtonRow> createState() => _ButtonRowState();
+}
+
+class _ButtonRowState extends State<_ButtonRow> {
+  int initialCount = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +48,13 @@ class _ButtonRow extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             DishCounter(
-              initialCount: 1,
+              initialCount: initialCount,
+              onCountIncrement: () {
+                initialCount++;
+              },
+              onCountDecrement: () {
+                initialCount--;
+              },
               parentMaxWidth: ResponsiveDesign.isDesktop ? maxWidth / 4 : maxWidth,
             ),
             (ResponsiveDesign.isDesktop
@@ -49,7 +62,15 @@ class _ButtonRow extends StatelessWidget {
                     : 16.toAutoScaledWidthWithParent(maxWidth))
                 .toHorizontalSpace,
             InkWell(
-              onTap: Get.back,
+              onTap: () {
+                final menuController = Get.find<OrderMenuController>();
+
+                for (int i = 0; i < initialCount; i++) {
+                  menuController.addToCart(controller.dishEntry);
+                }
+
+                Get.back();
+              },
               child: Container(
                 width: ResponsiveDesign.isDesktop
                     ? 44.toAutoScaledWidthWithParent(maxWidth)

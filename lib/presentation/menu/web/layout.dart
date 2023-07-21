@@ -12,7 +12,7 @@ class _WebLayoutState extends State<_WebLayout> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<_MenuController>();
+    final controller = Get.find<OrderMenuController>();
 
     return Obx(() {
       final data = controller.categorySortedData.value;

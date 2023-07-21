@@ -32,7 +32,7 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _MenuController controller = Get.put(_MenuController());
+    final OrderMenuController controller = Get.put(OrderMenuController());
 
     return Obx(() {
       if (controller.isDataLoading) {
