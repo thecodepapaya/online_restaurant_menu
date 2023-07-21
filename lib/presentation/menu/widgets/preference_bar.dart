@@ -5,18 +5,26 @@ class PreferenceBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      child: Row(
-        children: [
-          16.toAutoScaledWidthWithContext(context).toHorizontalSpace,
-          const PreferenceButton.vegan(),
-          const PreferenceButton.veg(),
-          const PreferenceButton.nonveg(),
-          const PreferenceButton.egg(),
-        ],
-      ),
-    );
+    final controller = Get.find<_MenuController>();
+
+    return Obx(() {
+      final showCartBanner = controller.cart.value.entries.isNotEmpty && ResponsiveDesign.isDesktop;
+
+      return Container(
+        color: Colors.white,
+        child: Row(
+          children: [
+            16.toAutoScaledWidthWithContext(context).toHorizontalSpace,
+            const PreferenceButton.vegan(),
+            const PreferenceButton.veg(),
+            const PreferenceButton.nonveg(),
+            const PreferenceButton.egg(),
+            const Expanded(child: SizedBox()),
+            if (showCartBanner) const _OrderButton(),
+          ],
+        ),
+      );
+    });
   }
 }
 
